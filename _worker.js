@@ -1,1 +1,331 @@
-const a0F=a0b;(function(a,b){const E=a0b,c=a();while(!![]){try{const d=parseInt(E(0xd0))/0x1*(parseInt(E(0xb5))/0x2)+-parseInt(E(0xbf))/0x3*(-parseInt(E(0xe6))/0x4)+-parseInt(E(0xe3))/0x5+parseInt(E(0x7d))/0x6*(parseInt(E(0xeb))/0x7)+-parseInt(E(0xa8))/0x8*(parseInt(E(0xea))/0x9)+parseInt(E(0x83))/0xa+parseInt(E(0xa7))/0xb*(-parseInt(E(0x81))/0xc);if(d===b)break;else c['push'](c['shift']());}catch(e){c['push'](c['shift']());}}}(a0a,0x6284d));let a0c='vl',a0d=a0F(0xb7),a0e=a0F(0x8c);import{connect}from'cloudflare:sockets';let a0f=a0F(0xd4),a0g=a0F(0xba),a0h=0x1bb,a0i=![],a0j=a0F(0x9d);async function a0k(){const G=a0F;try{const a=await fetch(a0j,{'cf':{'cacheEverything':!![]}});return new Response(a[G(0x74)],a);}catch{return new Response('<!DOCTYPE\x20html>\x0a\x20\x20\x20\x20\x20\x20\x20<html>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20<head><title>Welcome</title></head>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20<body><h1>Cloudflare\x20Worker\x20已部署成功</h1>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>此页面为静态伪装页面（远程加载失败）。</p></body>\x0a\x20\x20\x20\x20\x20\x20\x20</html>',{'status':0xc8,'headers':{'Content-Type':'text/html;\x20charset=utf-8'}});}}if(!a0r(a0f))throw new Error('uuid\x20is\x20not\x20valid');export default{async 'fetch'(a,b,c){const H=a0F;try{a0f=b['UUID']||a0f;if(b[H(0xe0)]){const h=b['PROXYIP'][H(0x8a)](':');a0g=h[0x0],a0h=h[H(0xe2)]>0x1?parseInt(h[0x1],0xa):0x1bb;}let d=![],f='哎呀你找到了我，但是我就是不给你看，气不气，嘿嘿嘿';if(b[H(0xbd)]!==undefined)d=b[H(0xbd)]==='true';else b['隐藏']!==undefined&&(d=b['隐藏']===H(0x7f));if(b[H(0x87)]!==undefined)f=b['SARCASM_MESSAGE'];else b[H(0xa5)]!==undefined&&(f=b[H(0xa5)]);b['NAT64']!==undefined&&(a0i=b[H(0x8f)]===H(0x7f));console[H(0x94)](H(0xbe)+b['HIDE_SUBSCRIPTION']),console[H(0x94)](H(0xb8)+b['隐藏']),console[H(0x94)](H(0xe4)+d),console[H(0x94)](H(0xe7)+b[H(0x87)]),console[H(0x94)](H(0xf0)+b['嘲讽语']),console[H(0x94)](H(0x9f)+f),console['log'](H(0xe8)+b['NAT64']),console['log'](H(0xda)+a0i),console[H(0x94)](H(0xc9)+b[H(0xe0)]),console['log'](H(0xc8)+a0g),console[H(0x94)](H(0xf1)+a0h);const g=a[H(0xf3)]['get']('Upgrade');if(!g||g!=='websocket'){const j=new URL(a[H(0xb1)]);switch(j[H(0xa4)]){case'/':return a0k();case'/'+a0f:{if(d)return new Response(f,{'status':0xc8,'headers':{'Content-Type':'text/plain;charset=utf-8'}});else{const k=a0z(a0f,a[H(0xf3)]['get'](H(0x80)));return new Response(''+k,{'status':0xc8,'headers':{'Content-Type':H(0xc1)}});}}default:return new Response(H(0xd9),{'status':0x194});}}else return await a0l(a,a0g,a0h);}catch(l){let m=l;return new Response(m[H(0x92)]());}}};async function a0l(a,b,c){const I=a0F,d=new WebSocketPair(),[e,f]=Object[I(0xc0)](d);f[I(0xef)]();let g='',h='';const j=(o,p)=>{const J=I;console[J(0x94)]('['+g+':'+h+']\x20'+o,p||'');},k=a[I(0xf3)][I(0xa1)]('sec-websocket-protocol')||'',l=a0n(f,k,j);let m={'value':null},n=![];return l['pipeTo'](new WritableStream({async 'write'(o,p){const K=I;if(n)return await a0y(o,f,null,j);if(m[K(0xcc)]){const x=m['value'][K(0x72)][K(0xa6)]();await x[K(0xbb)](o),x[K(0x7c)]();return;}const {hasError:q,message:r,addressType:s,portRemote:portRemote=0x1bb,addressRemote:addressRemote='',rawDataIndex:t,dynamicProtocolVersion:dynamicProtocolVersion=new Uint8Array([0x0,0x0]),isUDP:u}=a0o(o,a0f);g=addressRemote,h=portRemote+'--'+Math['random']()+'\x20'+(u?'udp\x20':K(0x93))+'\x20';if(q){j('Error\x20parsing\x20VLESS\x20header:\x20'+r),a0u(f);throw new Error(r);}if(u){if(portRemote===0x35)n=!![];else{j(K(0x84)),a0u(f);throw new Error(K(0xb4));}}const v=new Uint8Array([dynamicProtocolVersion[0x0],0x0]),w=o['slice'](t);if(n)return a0y(w,f,v,j);await a0m(m,addressRemote,portRemote,w,f,v,j,b,c,a0i);},'close'(){const L=I;j(L(0xaf));},'abort'(o){const M=I;j(M(0x99),JSON[M(0x90)](o));}}))[I(0xa2)](o=>{const N=I;j(N(0xbc),o);}),new Response(null,{'status':0x65,'webSocket':e});}async function a0m(a,b,c,d,e,f,g,h,j,k){const O=a0F;let l;try{g(O(0xdb)+b+':'+c),l=connect({'hostname':b,'port':c}),await l[O(0xf4)],g(O(0xc4)+b+':'+c);}catch(m){console[O(0xc6)]('[Error\x201/3]\x20Direct\x20connection\x20failed\x20for\x20'+b+':'+c+':',m[O(0xae)]||m['message']||m);if(k)try{g(O(0x70)+b+':'+c);const {tcpSocket:n}=await a0C(b,c);l=n,g(O(0x91)+b+':'+c);}catch(o){console['error'](O(0xab)+b+':'+c+':',o[O(0xae)]||o[O(0xf2)]||o);if(h){g('[Attempt\x203/3]\x20NAT64\x20failed,\x20attempting\x20to\x20fall\x20back\x20to\x20proxyIP:\x20'+h+':'+j);try{l=connect({'hostname':h,'port':j}),await l[O(0xf4)],g('[Success\x203/3]\x20Successfully\x20connected\x20via\x20proxyIP\x20to\x20'+h+':'+j);}catch(p){console[O(0xc6)]('[Error\x203/3]\x20Fallback\x20to\x20proxyIP\x20failed\x20for\x20'+h+':'+j+':',p[O(0xae)]||p[O(0xf2)]||p),a0u(e);return;}}else{console[O(0xc6)]('[Error]\x20NAT64\x20failed\x20and\x20no\x20fallback\x20proxyIP\x20provided.\x20Closing\x20WebSocket.'),a0u(e);return;}}else{g(O(0x89));if(h){g(O(0xa9)+h+':'+j);try{l=connect({'hostname':h,'port':j}),await l['opened'],g('[Success\x202/2]\x20Successfully\x20connected\x20via\x20proxyIP\x20to\x20'+h+':'+j);}catch(q){console[O(0xc6)](O(0xc3)+h+':'+j+':',q[O(0xae)]||q[O(0xf2)]||q),a0u(e);return;}}else{console['error']('[Error]\x20Direct\x20connection\x20failed,\x20NAT64\x20is\x20disabled,\x20and\x20no\x20fallback\x20proxyIP\x20provided.\x20Closing\x20WebSocket.'),a0u(e);return;}}}if(l){a[O(0xcc)]=l;const r=l['writable'][O(0xa6)]();await r['write'](d),r[O(0x7c)](),a0p(l,e,f,null,g);}else console[O(0xc6)](O(0xee)),a0u(e);}function a0n(a,b,c){let d=![];const e=new ReadableStream({'start'(f){const P=a0b;a[P(0xd7)](P(0xf2),j=>{const Q=P;if(d)return;const k=j[Q(0x71)];f['enqueue'](k);}),a[P(0xd7)]('close',()=>{a0u(a);if(d)return;f['close']();}),a[P(0xd7)](P(0xc6),j=>{const R=P;c('webSocketServer\x20has\x20error'),f[R(0xc6)](j);});const {earlyData:g,error:h}=a0q(b);if(h)f[P(0xc6)](h);else g&&f[P(0xce)](g);},'pull'(f){},'cancel'(f){if(d)return;c('ReadableStream\x20was\x20canceled,\x20due\x20to\x20'+f),d=!![],a0u(a);}});return e;}function a0o(a,b){const S=a0F;if(a['byteLength']<0x18)return{'hasError':!![],'message':'invalid\x20data'};const c=new Uint8Array(a[S(0x8e)](0x0,0x1));let d=![],e=![];a0x(new Uint8Array(a[S(0x8e)](0x1,0x11)))===b&&(d=!![]);if(!d)return{'hasError':!![],'message':S(0xe9)};const f=new Uint8Array(a['slice'](0x11,0x12))[0x0],g=new Uint8Array(a[S(0x8e)](0x12+f,0x12+f+0x1))[0x0];if(g===0x1){}else{if(g===0x2)e=!![];else return{'hasError':!![],'message':S(0x78)+g+S(0xdf)};}const h=0x12+f+0x1,j=a[S(0x8e)](h,h+0x2),k=new DataView(j)[S(0xc2)](0x0);let l=h+0x2;const m=new Uint8Array(a[S(0x8e)](l,l+0x1)),n=m[0x0];let o=0x0,p=l+0x1,q='';switch(n){case 0x1:o=0x4,q=new Uint8Array(a['slice'](p,p+o))['join']('.');break;case 0x2:o=new Uint8Array(a['slice'](p,p+0x1))[0x0],p+=0x1,q=new TextDecoder()[S(0x82)](a[S(0x8e)](p,p+o));break;case 0x3:o=0x10;const r=new DataView(a['slice'](p,p+o)),s=[];for(let t=0x0;t<0x8;t++){s[S(0xdd)](r[S(0xc2)](t*0x2)[S(0x92)](0x10));}q=s[S(0x75)](':');break;default:return{'hasError':!![],'message':S(0xb3)+n};}if(!q)return{'hasError':!![],'message':'addressValue\x20is\x20empty,\x20addressType\x20is\x20'+n};return{'hasError':![],'addressRemote':q,'addressType':n,'portRemote':k,'rawDataIndex':p+o,'dynamicProtocolVersion':c,'isUDP':e};}async function a0p(a,b,c,d,e){const T=a0F;let f=c,g=![];await a[T(0x85)][T(0x79)](new WritableStream({'start'(){},async 'write'(h,j){const U=T;g=!![],b[U(0x88)]!==a0s&&j['error'](U(0xd8)),f?(b[U(0xec)](await new Blob([f,h])[U(0x96)]()),f=null):b[U(0xec)](h);},'close'(){const V=T;e(V(0x95)+g),a0u(b);},'abort'(h){const W=T;console[W(0xc6)]('remoteConnection!.readable\x20abort',h),a0u(b);}}))[T(0xa2)](h=>{const X=T;console['error'](X(0xcb),h['stack']||h),a0u(b);});}function a0q(a){const Y=a0F;if(!a)return{'error':null};try{a=a[Y(0xd5)](/-/g,'+')[Y(0xd5)](/_/g,'/');const b=atob(a),c=Uint8Array['from'](b,d=>d[Y(0xb9)](0x0));return{'earlyData':c[Y(0xd2)],'error':null};}catch(d){return{'error':d};}}function a0r(a){const b=/^[0-9a-f]{8}-[0-9a-f]{4}-[4][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;return b['test'](a);}const a0s=0x1,a0t=0x2;function a0b(a,b){const c=a0a();return a0b=function(d,e){d=d-0x70;let f=c[d];return f;},a0b(a,b);}function a0u(a){const Z=a0F;try{(a[Z(0x88)]===a0s||a['readyState']===a0t)&&a[Z(0xe5)]();}catch(b){console[Z(0xc6)](Z(0xca),b);}}const a0v=[];for(let a0D=0x0;a0D<0x100;++a0D){a0v[a0F(0xdd)]((a0D+0x100)[a0F(0x92)](0x10)['slice'](0x1));}function a0w(a,b=0x0){const a0=a0F;return(a0v[a[b+0x0]]+a0v[a[b+0x1]]+a0v[a[b+0x2]]+a0v[a[b+0x3]]+'-'+a0v[a[b+0x4]]+a0v[a[b+0x5]]+'-'+a0v[a[b+0x6]]+a0v[a[b+0x7]]+'-'+a0v[a[b+0x8]]+a0v[a[b+0x9]]+'-'+a0v[a[b+0xa]]+a0v[a[b+0xb]]+a0v[a[b+0xc]]+a0v[a[b+0xd]]+a0v[a[b+0xe]]+a0v[a[b+0xf]])[a0(0x73)]();}function a0x(a,b=0x0){const a1=a0F,c=a0w(a,b);if(!a0r(c))throw TypeError(a1(0x77));return c;}async function a0y(a,b,c,d){const a2=a0F;try{const e=a2(0x8b),f=0x35;let g=c;const h=connect({'hostname':e,'port':f});d(a2(0xb0)+e+':'+f);const j=h[a2(0x72)]['getWriter']();await j[a2(0xbb)](a),j[a2(0x7c)](),await h[a2(0x85)]['pipeTo'](new WritableStream({async 'write'(k){const a3=a2;b[a3(0x88)]===a0s&&(g?(b[a3(0xec)](await new Blob([g,k])[a3(0x96)]()),g=null):b[a3(0xec)](k));},'close'(){const a4=a2;d(a4(0x9a)+e+a4(0xa0));},'abort'(k){const a5=a2;console[a5(0xc6)]('dns\x20server('+e+a5(0xe1),k);}}));}catch(k){console[a2(0xc6)](a2(0x97)+k[a2(0xf2)]);}}function a0z(a,b){const a6=a0F,c=a0c+a0d,d=''+c+a0e+a+'@'+b+a6(0xde)+('?encryption=none&security=tls&sni='+b+a6(0x9e)+b+a6(0xac)+b);return a6(0xc5)+d+a6(0xd1)+(a0c+a0d)+a6(0xa3)+b+a6(0x7e)+b+a6(0xdc)+a+'\x0a\x20\x20network:\x20ws\x0a\x20\x20tls:\x20true\x0a\x20\x20udp:\x20false\x0a\x20\x20sni:\x20'+b+a6(0xaa)+b+a6(0x7b);}function a0A(a){const a7=a0F,b=a[a7(0x8a)]('.');if(b[a7(0xe2)]!==0x4)throw new Error('Invalid\x20IPv4\x20address\x20format\x20for\x20NAT64\x20conversion.');const c=b[a7(0x76)](d=>{const a8=a7,e=parseInt(d,0xa);if(e<0x0||e>0xff)throw new Error(a8(0xb6));return e[a8(0x92)](0x10)[a8(0x9b)](0x2,'0');});return'2602:fc59:b0:64::'+c[0x0]+c[0x1]+':'+c[0x2]+c[0x3];}async function a0B(a){const a9=a0F,b=new AbortController(),c=setTimeout(()=>b[a9(0x9c)](),0x1388);try{const d=await fetch(a9(0xd3)+a+a9(0x86),{'headers':{'Accept':a9(0xb2)},'signal':b[a9(0x98)]});clearTimeout(c);if(!d['ok'])throw new Error('DNS\x20query\x20failed\x20with\x20status:\x20'+d[a9(0xd6)]);const e=await d['json']();if(e[a9(0xad)]&&e['Answer'][a9(0xe2)]>0x0){const f=e[a9(0xad)][a9(0xc7)](g=>g[a9(0xed)]===0x1);if(f){const g=f['data'];return a0A(g);}}throw new Error('No\x20A\x20record\x20found\x20for\x20domain\x20or\x20unable\x20to\x20resolve\x20IPv4\x20address.');}catch(h){clearTimeout(c);if(h[a9(0xcd)]==='AbortError')throw new Error(a9(0x7a)+a);throw new Error(a9(0x8d)+h[a9(0xf2)]);}}function a0a(){const ab=['send','type','No\x20TCP\x20socket\x20established\x20after\x20all\x20connection\x20attempts.\x20Closing\x20WebSocket.','accept','环境变量\x20嘲讽语\x20原始值\x20(中文):\x20','最终解析的\x20proxyPort:\x20','message','headers','opened','[Attempt\x202/3]\x20Direct\x20failed,\x20attempting\x20NAT64\x20connection\x20to\x20','data','writable','toLowerCase','body','join','map','Stringified\x20UUID\x20is\x20invalid','command\x20','pipeTo','DNS\x20resolution\x20for\x20NAT64\x20timed\x20out\x20for\x20domain:\x20','\x0a---------------------------------------------------------------\x0a################################################################\x0a','releaseLock','6FUpFMT','\x0a\x20\x20server:\x20','true','Host','846516QBCNlc','decode','5418120jJDZtH','UDP\x20proxy\x20only\x20enabled\x20for\x20DNS\x20which\x20is\x20port\x2053','readable','&type=A','SARCASM_MESSAGE','readyState','[Skipping\x20NAT64]\x20NAT64\x20is\x20disabled,\x20skipping\x20attempt.','split','8.8.8.8','://','DNS\x20resolution\x20for\x20NAT64\x20failed:\x20','slice','NAT64','stringify','[Success\x202/3]\x20Successfully\x20connected\x20via\x20NAT64\x20to\x20','toString','tcp\x20','log','remoteConnection!.readable\x20is\x20close\x20with\x20hasIncomingData\x20is\x20','arrayBuffer','handleDNSQuery\x20have\x20exception,\x20error:\x20','signal','readableWebSocketStream\x20is\x20abort','dns\x20server(','padStart','abort','https://cf-worker-dir-bke.pages.dev','&fp=randomized&type=ws&host=','最终解析的嘲讽语:\x20',')\x20tcp\x20is\x20close','get','catch','\x0a\x20\x20name:\x20','pathname','嘲讽语','getWriter','143XasqNf','248aMsqGr','[Attempt\x202/2]\x20Direct\x20failed\x20and\x20NAT64\x20disabled,\x20attempting\x20to\x20fall\x20back\x20to\x20proxyIP:\x20','\x0a\x20\x20client-fingerprint:\x20chrome\x0a\x20\x20ws-opts:\x0a\x20\x20\x20\x20path:\x20\x22/?ed=2048\x22\x0a\x20\x20\x20\x20headers:\x0a\x20\x20\x20\x20\x20\x20host:\x20','[Error\x202/3]\x20NAT64\x20connection\x20failed\x20for\x20','&path=%2F%3Fed%3D2048#','Answer','stack','readableWebSocketStream\x20is\x20close','connected\x20to\x20','url','application/dns-json','invild\x20\x20addressType\x20is\x20','UDP\x20proxy\x20only\x20enable\x20for\x20DNS\x20which\x20is\x20port\x2053','62158XFcvaB','Invalid\x20IPv4\x20address\x20segment\x20for\x20NAT64\x20conversion.','ess','环境变量\x20隐藏\x20原始值\x20(中文):\x20','charCodeAt','proxyip.zone.id','write','readableWebSocketStream\x20pipeTo\x20error','HIDE_SUBSCRIPTION','环境变量\x20HIDE_SUBSCRIPTION\x20原始值\x20(英文):\x20','15ttdLik','values','text/plain;charset=utf-8','getUint16','[Error\x202/2]\x20Fallback\x20to\x20proxyIP\x20failed\x20for\x20','[Success\x201/3]\x20Successfully\x20connected\x20directly\x20to\x20','\x0a################################################################\x0av2ray\x0a---------------------------------------------------------------\x0a','error','find','最终解析的\x20proxyIP:\x20','环境变量\x20PROXYIP\x20原始值:\x20','safeCloseWebSocket\x20error','remoteSocketToWS\x20has\x20exception\x20','value','name','enqueue','test','20gwTrOg','\x0a---------------------------------------------------------------\x0a################################################################\x0aclash-meta\x0a---------------------------------------------------------------\x0a-\x20type:\x20','buffer','https://1.1.1.1/dns-query?name=','d342d11e-d424-4583-b36e-524ab1f0afa4','replace','status','addEventListener','webSocket.readyState\x20is\x20not\x20open,\x20maybe\x20close','Not\x20found','最终解析的布尔值\x20NAT64:\x20','[Attempt\x201/3]\x20Attempting\x20direct\x20connection\x20to\x20','\x0a\x20\x20port:\x20443\x0a\x20\x20uuid:\x20','push',':443','\x20is\x20not\x20support,\x20command\x2001-tcp,02-udp,03-mux','PROXYIP',')\x20tcp\x20is\x20abort','length','740700ocDTGH','最终解析的布尔值\x20隐藏:\x20','close','423596hkOgBQ','环境变量\x20SARCASM_MESSAGE\x20原始值\x20(英文):\x20','环境变量\x20NAT64\x20原始值:\x20','invalid\x20user','126306bsBYSa','1476293vbYIRc'];a0a=function(){return ab;};return a0a();}async function a0C(a,b){const aa=a0F;let c;const d=/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/;d[aa(0xcf)](a)?c=a0A(a):c=await a0B(a);const e=connect({'hostname':'['+c+']','port':b});return await e[aa(0xf4)],{'tcpSocket':e};}
+import { connect as 连接 } from 'cloudflare:sockets';
+// 兼容日期 2026.1.20
+/*
+vless://9999ad27-33db-4705-b026-a4cefa6b9999@162.159.39.178:443?encryption=none&security=tls&sni=你部署的host&fp=chrome&alpn=h3&insecure=0&allowInsecure=0&ech=cloudflare-ech.com%2Bhttps%3A%2F%2F223.6.6.6%2Fdns-query&type=ws&host=你部署的host&path=%2F#cf
+*/
+
+const 基础64文本解码器 = new TextDecoder();
+function 解码64(文本) {
+  const 二进制 = atob(文本);
+  const 字节 = new Uint8Array(二进制.length);
+  for (let 索引 = 0; 索引 < 二进制.length; 索引++) 字节[索引] = 二进制.charCodeAt(索引);
+  return 基础64文本解码器.decode(字节);
+}
+
+const 错误_无效数据 = 解码64('aW52YWxpZCBkYXRh');
+const 错误_无效用户 = 解码64('aW52YWxpZCB1c2Vy');
+const 错误_不支持命令 = 解码64('Y29tbWFuZCBpcyBub3Qgc3VwcG9ydGVk');
+const 错误_仅支持DNS_UDP = 解码64('VURQIHByb3h5IG9ubHkgZW5hYmxlIGZvciBETlMgd2hpY2ggaXMgcG9ydCA1Mw==');
+const 错误_无效地址类型 = 解码64('aW52YWxpZCBhZGRyZXNzVHlwZQ==');
+const 错误_空地址 = 解码64('YWRkcmVzc1ZhbHVlIGlzIGVtcHR5');
+const 错误_无效标识字符串 = 解码64('U3RyaW5naWZpZWQgaWRlbnRpZmllciBpcyBpbnZhbGlk');
+const 日志_流关闭 = 解码64('c3RyZWFtIGNsb3NlZA==');
+const 日志_流中止 = 解码64('c3RyZWFtIGFib3J0');
+const 日志_管道错误 = 解码64('c3RyZWF0IHBpcGUgZXJyb3I=');
+const 日志_连接成功 = 解码64('Y29ubmVjdGVk');
+const 日志_重试错误 = 解码64('cmV0cnkgZXJy');
+const 日志_关闭错误 = 解码64('Y2xvc2UgZXJy');
+const 日志_远程关闭 = 解码64('cmVtb3RlIGNsb3NlLCBkYXRhOg==');
+const 日志_远程中止 = 解码64('cmVtb3RlIGFib3J0');
+const 日志_传输错误 = 解码64('dHJhbnNmZXIgZXJyb3I=');
+const 日志_DNS错误 = 解码64('ZG5zIGVycjo=');
+const 日志_DNS成功 = 解码64('ZG5zIHJlc29sdmUgc3VjY2Vzczo=');
+const 日志_套接字错误 = 解码64('c29ja2V0IGVycg==');
+const 日志_流取消 = 解码64('c3RyZWF0IGNhbmNlbDo=');
+const 日志_套接字关闭 = 解码64('c29ja2V0IGNsb3NlZA==');
+const 响应_未找到 = 解码64('Tm90IGZvdW5k');
+const 内容类型_纯文本 = 解码64('dGV4dC9wbGFpbjtjaGFyc2V0PXV0Zi04');
+const 升级头名称 = 解码64('VXBncmFkZQ==');
+const 协议_WebSocket = 解码64('d2Vic29ja2V0');
+const 协议_早期数据 = 解码64('c2VjLXdlYnNvY2tldC1wcm90b2NvbA==');
+const 内容类型头 = 解码64('Y29udGVudC10eXBl');
+const MIME_DNS = 解码64('YXBwbGljYXRpb24vZG5zLW1lc3NhZ2U=');
+const DNS服务器URL = 解码64('aHR0cHM6Ly84LjguOC44L2Rucy1xdWVyeQ==');
+const HTTP方法_POST = 解码64('UE9TVA==');
+const 日志_UDP标签 = 解码64('dWRwIA==');
+const 日志_TCP标签 = 解码64('dGNwIA==');
+const 日志_关闭消息 = 解码64('c29ja2V0IGNsb3NlZA==');
+
+
+let 认证令牌 = '9999ad27-33db-4705-b026-a4cefa6b9999';
+let 代理IP = 'Prox'+'yIP.CM'+'Liusss'+'s.net';
+
+if (!验证UUID(认证令牌)) throw new Error(错误_无效标识字符串);
+
+export default {
+    async fetch(请求, 环境, 上下文) {
+        try {
+            认证令牌 = 环境.UUID || 认证令牌;
+            代理IP = 环境.PROXYIP || 代理IP;
+            const 升级头 = 请求.headers.get(升级头名称);
+            if (!升级头 || 升级头 !== 协议_WebSocket) {
+                const 网址 = new URL(请求.url);
+                switch (网址.pathname) {
+                    case '/':
+                        return fetch('https://global.cctv.com/');
+                    default:
+                        return new Response(响应_未找到, { status: 404 });
+                }
+            } else return await 处理WebSocket(请求);
+        } catch (错误) {
+            return new Response(错误.toString());
+        }
+    },
+};
+
+async function 处理WebSocket(请求) {
+    const 套接字对 = new WebSocketPair();
+    const [客户端, 服务端] = Object.values(套接字对);
+    服务端.accept();
+
+    let 目标地址 = '', 目标端口 = '';
+    const 记录日志 = (信息, 错误) => console.log(`[${目标地址}:${目标端口}] ${信息}`, 错误 || '');
+    const 早期数据协议 = 请求.headers.get(协议_早期数据) || '';
+    const 可读流 = 创建可读流(服务端, 早期数据协议, 记录日志);
+
+    let 连接结果 = { value: null };
+    let UDP写入器 = null, 已发送UDP头 = false;
+
+    可读流.pipeTo(new WritableStream({
+        async write(数据块, 控制器) {
+            if (已发送UDP头 && UDP写入器) return UDP写入器(数据块);
+            if (连接结果.value) {
+                const 写入器 = 连接结果.value.writable.getWriter();
+                await 写入器.write(数据块);
+                写入器.releaseLock();
+                return;
+            }
+
+            const {
+                hasError: 有错误,
+                message: 消息,
+                portRemote: 远程端口 = 443,
+                addressRemote: 远程地址,
+                rawDataIndex: 原始数据索引,
+                wVersion: w版本 = new Uint8Array([0, 0]),
+                isUDP: 是否UDP
+            } = 解析w数据(数据块, 认证令牌);
+
+            目标地址 = 远程地址;
+            目标端口 = `${远程端口}--${Math.random()} ${是否UDP ? 日志_UDP标签 : 日志_TCP标签}`;
+            if (有错误) throw new Error(消息);
+            if (是否UDP && 远程端口 !== 53) throw new Error(错误_仅支持DNS_UDP);
+
+            const 版本头 = new Uint8Array([w版本[0], 0]);
+            const 剩余数据 = 数据块.slice(原始数据索引);
+
+            if (是否UDP) {
+                const { write } = await 处理UDP(服务端, 版本头, 记录日志);
+                UDP写入器 = write;
+                已发送UDP头 = true;
+                UDP写入器(剩余数据);
+                return;
+            }
+            连接并转发(连接结果, 远程地址, 远程端口, 剩余数据, 服务端, 版本头, 记录日志);
+        },
+        close() { 记录日志(日志_流关闭) },
+        abort(原因) { 记录日志(日志_流中止, JSON.stringify(原因)) }
+    })).catch(错误 => 记录日志(日志_管道错误, 错误));
+
+    return new Response(null, { status: 101, webSocket: 客户端 });
+}
+
+async function 连接并转发(连接结果, 地址, 端口, 初始数据, 服务端, 版本头, 记录日志) {
+    async function 建立连接(目标地址, 目标端口) {
+        const 套接字 = 连接({ hostname: 目标地址, port: 目标端口 });
+        连接结果.value = 套接字;
+        记录日志(`${日志_连接成功} ${目标地址}:${目标端口}`);
+        const 写入器 = 套接字.writable.getWriter();
+        await 写入器.write(初始数据);
+        写入器.releaseLock();
+        return 套接字;
+    }
+
+    async function 重试连接() {
+        const 套接字 = await 建立连接(代理IP || 地址, 端口);
+        套接字.closed.catch(错误 => console.log(日志_重试错误, 错误)).finally(() => 关闭WebSocket(服务端));
+        转发数据(套接字, 服务端, 版本头, 重试连接, 记录日志);
+    }
+
+    const 套接字 = await 建立连接(地址, 端口);
+    转发数据(套接字, 服务端, 版本头, 重试连接, 记录日志);
+}
+
+function 创建可读流(服务端, 早期数据, 记录日志) {
+    let 已取消 = false;
+    return new ReadableStream({
+        start(控制器) {
+            服务端.addEventListener('message', 事件 => {
+                if (已取消) return;
+                控制器.enqueue(事件.data);
+            });
+            服务端.addEventListener('close', () => {
+                关闭WebSocket(服务端);
+                if (已取消) return;
+                控制器.close();
+            });
+            服务端.addEventListener('error', 事件 => {
+                记录日志(日志_套接字错误);
+                控制器.error(事件);
+            });
+            const { earlyData: 早期数据字节, error: 错误 } = 解码早期数据(早期数据);
+            错误 ? 控制器.error(错误) : 早期数据字节 && 控制器.enqueue(早期数据字节.buffer);
+        },
+        pull() {},
+        cancel(原因) {
+            if (已取消) return;
+            记录日志(`${日志_流取消} ${原因}`);
+            已取消 = true;
+            关闭WebSocket(服务端);
+        }
+    });
+}
+
+function 解析w数据(数据块, 用户密钥) {
+    if (数据块.byteLength < 24) return { hasError: true, message: 错误_无效数据 };
+    const 版本 = new Uint8Array(数据块.slice(0, 1));
+    let 是否UDP = false, 是否UDP命令 = false;
+    const 用户ID字节 = new Uint8Array(数据块.slice(1, 17));
+    if (验证并获取UUID(用户ID字节) !== 用户密钥) return { hasError: true, message: 错误_无效用户 };
+
+    const 可选长度 = new Uint8Array(数据块.slice(17, 18))[0];
+    const 命令 = new Uint8Array(数据块.slice(18 + 可选长度, 19 + 可选长度))[0];
+    if (命令 === 2) 是否UDP命令 = true;
+    else if (命令 !== 1) return { hasError: true, message: 错误_不支持命令 };
+
+    const 端口起始 = 18 + 可选长度 + 1;
+    const 端口字节 = 数据块.slice(端口起始, 端口起始 + 2);
+    const 远程端口 = new DataView(端口字节).getUint16(0);
+
+    const 地址起始 = 端口起始 + 2;
+    const 地址类型 = new Uint8Array(数据块.slice(地址起始, 地址起始 + 1))[0];
+    let 地址长度 = 0, 地址值起始 = 地址起始 + 1, 远程地址 = '';
+
+    switch (地址类型) {
+        case 1:
+            地址长度 = 4;
+            远程地址 = new Uint8Array(数据块.slice(地址值起始, 地址值起始 + 地址长度)).join('.');
+            break;
+        case 2:
+            地址长度 = new Uint8Array(数据块.slice(地址值起始, 地址值起始 + 1))[0];
+            地址值起始++;
+            远程地址 = new TextDecoder().decode(数据块.slice(地址值起始, 地址值起始 + 地址长度));
+            break;
+        case 3:
+            地址长度 = 16;
+            const 视图 = new DataView(数据块.slice(地址值起始, 地址值起始 + 地址长度));
+            const 片段 = [];
+            for (let i = 0; i < 8; i++) 片段.push(视图.getUint16(i * 2).toString(16));
+            远程地址 = 片段.join(':');
+            break;
+        default:
+            return { hasError: true, message: 错误_无效地址类型 };
+    }
+
+    if (!远程地址) return { hasError: true, message: 错误_空地址 };
+    return {
+        hasError: false, addressRemote: 远程地址, addressType: 地址类型, portRemote: 远程端口,
+        rawDataIndex: 地址值起始 + 地址长度, wVersion: 版本, isUDP: 是否UDP命令
+    };
+}
+
+async function 转发数据(远程套接字, 服务端, 版本头, 重试函数, 记录日志) {
+    let 已发送头 = false, 版本头副本 = 版本头;
+    await 远程套接字.readable.pipeTo(new WritableStream({
+        async write(数据块, 控制器) {
+            已发送头 = true;
+            if (服务端.readyState !== 1) 控制器.error(日志_套接字关闭);
+            if (版本头副本) {
+                服务端.send(await new Blob([版本头副本, 数据块]).arrayBuffer());
+                版本头副本 = null;
+            } else {
+                服务端.send(数据块);
+            }
+        },
+        close() { 记录日志(`${日志_远程关闭} ${已发送头}`) },
+        abort(原因) { console.error(日志_远程中止, 原因) }
+    })).catch(错误 => {
+        console.error(日志_传输错误, 错误.stack || 错误);
+        关闭WebSocket(服务端);
+    });
+    if (已发送头 === false && 重试函数) 重试函数();
+}
+
+function 解码早期数据(字符串) {
+    if (!字符串) return { error: null };
+    try {
+        字符串 = 字符串.replace(/-/g, '+').replace(/_/g, '/');
+        const 二进制 = atob(字符串);
+        const 字节数组 = Uint8Array.from(二进制, 字符 => 字符.charCodeAt(0));
+        return { earlyData: 字节数组.buffer, error: null };
+    } catch (错误) {
+        return { error: 错误 };
+    }
+}
+
+function 验证UUID(字符串) {
+    const 正则 = /^[0-9a-f]{8}-[0-9a-f]{4}-[4][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    return 正则.test(字符串);
+}
+
+const 打开状态 = 1, 关闭状态 = 2;
+function 关闭WebSocket(套接字) {
+    try {
+        if (套接字.readyState === 打开状态 || 套接字.readyState === 关闭状态) 套接字.close();
+    } catch (错误) {
+        console.error(日志_关闭错误, 错误);
+    }
+}
+
+const 十六进制表 = [];
+for (let i = 0; i < 256; i++) 十六进制表.push((i + 256).toString(16).slice(1));
+function 字节转UUID字符串(字节数组, 偏移 = 0) {
+    return (十六进制表[字节数组[偏移+0]] + 十六进制表[字节数组[偏移+1]] + 十六进制表[字节数组[偏移+2]] + 十六进制表[字节数组[偏移+3]] + "-" +
+            十六进制表[字节数组[偏移+4]] + 十六进制表[字节数组[偏移+5]] + "-" +
+            十六进制表[字节数组[偏移+6]] + 十六进制表[字节数组[偏移+7]] + "-" +
+            十六进制表[字节数组[偏移+8]] + 十六进制表[字节数组[偏移+9]] + "-" +
+            十六进制表[字节数组[偏移+10]] + 十六进制表[字节数组[偏移+11]] + 十六进制表[字节数组[偏移+12]] + 十六进制表[字节数组[偏移+13]] + 十六进制表[字节数组[偏移+14]] + 十六进制表[字节数组[偏移+15]]).toLowerCase();
+}
+function 验证并获取UUID(字节数组, 偏移 = 0) {
+    const 字符串 = 字节转UUID字符串(字节数组, 偏移);
+    if (!验证UUID(字符串)) throw TypeError(错误_无效标识字符串);
+    return 字符串;
+}
+
+async function 处理UDP(服务端, 版本头, 记录日志) {
+    let 已发送版本头 = false;
+    const 转换流 = new TransformStream({
+        transform(数据块, 控制器) {
+            for (let i = 0; i < 数据块.byteLength; ) {
+                const 长度字节 = 数据块.slice(i, i + 2);
+                const 长度 = new DataView(长度字节).getUint16(0);
+                const 负载 = new Uint8Array(数据块.slice(i + 2, i + 2 + 长度));
+                i += 2 + 长度;
+                控制器.enqueue(负载);
+            }
+        }
+    });
+
+    转换流.readable.pipeTo(new WritableStream({
+        async write(查询数据) {
+            const 响应 = await fetch(DNS服务器URL, {
+                method: HTTP方法_POST, headers: { [内容类型头]: MIME_DNS }, body: 查询数据
+            });
+            const 应答数据 = await 响应.arrayBuffer();
+            const 应答长度 = 应答数据.byteLength;
+            const 长度头 = new Uint8Array([(应答长度 >> 8) & 0xff, 应答长度 & 0xff]);
+            if (服务端.readyState === 1) {
+                记录日志(`${日志_DNS成功} ${应答长度}`);
+                if (!已发送版本头) {
+                    服务端.send(await new Blob([版本头, 长度头, 应答数据]).arrayBuffer());
+                    已发送版本头 = true;
+                } else {
+                    服务端.send(await new Blob([长度头, 应答数据]).arrayBuffer());
+                }
+            }
+        }
+    })).catch(错误 => 记录日志(日志_DNS错误 + 错误));
+
+    const 写入器 = 转换流.writable.getWriter();
+    return { write: 数据 => 写入器.write(数据) };
+}
