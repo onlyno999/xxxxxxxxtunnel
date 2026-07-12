@@ -1,1 +1,584 @@
-const a0G=a0b;function a0b(a,b){a=a-0x1b0;const c=a0a();let d=c[a];return d;}(function(a,b){const F=a0b,c=a();while(!![]){try{const d=parseInt(F(0x1dc))/0x1+-parseInt(F(0x1d3))/0x2+parseInt(F(0x1cf))/0x3+parseInt(F(0x1f3))/0x4+parseInt(F(0x22c))/0x5+-parseInt(F(0x1ee))/0x6+parseInt(F(0x1b2))/0x7;if(d===b)break;else c['push'](c['shift']());}catch(e){c['push'](c['shift']());}}}(a0a,0xbd416));let a0c='vl',a0d=a0G(0x1db),a0e='://';import{connect}from'cloudflare:sockets';let a0f=a0G(0x223),a0g='proxyip.zone.id',a0h=0x1bb,a0j=![],a0k=a0G(0x1fc);async function a0l(){const H=a0G;try{const a=await fetch(a0k,{'cf':{'cacheEverything':!![]}});return new Response(a['body'],a);}catch{return new Response(H(0x208),{'status':0xc8,'headers':{'Content-Type':H(0x225)}});}}if(!a0s(a0f))throw new Error(a0G(0x22b));export default{async 'fetch'(a,b,c){const I=a0G;try{a0f=b[I(0x1fb)]||a0f;if(b[I(0x20b)]){const h=b['PROXYIP'][I(0x1e1)](':');a0g=h[0x0],a0h=h[I(0x1c5)]>0x1?parseInt(h[0x1],0xa):0x1bb;}let d=![],f=I(0x205);if(b[I(0x1f6)]!==undefined)d=b[I(0x1f6)]==='true';else b['隐藏']!==undefined&&(d=b['隐藏']==='true');if(b[I(0x210)]!==undefined)f=b[I(0x210)];else b[I(0x220)]!==undefined&&(f=b[I(0x220)]);b['NAT64']!==undefined&&(a0j=b[I(0x1c0)]===I(0x1b8));console[I(0x1ed)](I(0x1ba)+b['HIDE_SUBSCRIPTION']),console[I(0x1ed)](I(0x1f0)+b['隐藏']),console['log']('最终解析的布尔值\x20隐藏:\x20'+d),console['log'](I(0x204)+b['SARCASM_MESSAGE']),console['log'](I(0x207)+b['嘲讽语']),console[I(0x1ed)](I(0x1d1)+f),console[I(0x1ed)](I(0x20a)+b[I(0x1c0)]),console[I(0x1ed)](I(0x214)+a0j),console[I(0x1ed)](I(0x1b9)+b['PROXYIP']),console['log']('最终解析的\x20proxyIP:\x20'+a0g),console[I(0x1ed)](I(0x1e9)+a0h);const g=a['headers'][I(0x1e3)](I(0x1bc));if(!g||g!=='websocket'){const j=new URL(a[I(0x1c2)]);switch(j['pathname']){case'/':return a0l();case'/'+a0f:{if(d)return new Response(f,{'status':0xc8,'headers':{'Content-Type':I(0x222)}});else{const k=a0A(a0f,a[I(0x1be)][I(0x1e3)](I(0x21a)));return new Response(''+k,{'status':0xc8,'headers':{'Content-Type':I(0x222)}});}}default:return new Response(I(0x1b1),{'status':0x194});}}else return await a0m(a,a0g,a0h);}catch(l){let m=l;return new Response(m[I(0x1ca)]());}}};async function a0m(a,b,c){const J=a0G,d=new WebSocketPair(),[e,f]=Object[J(0x21c)](d);f['accept']();let g='',h='';const j=(o,p)=>{const K=J;console[K(0x1ed)]('['+g+':'+h+']\x20'+o,p||'');},k=a['headers']['get'](J(0x200))||'',l=a0o(f,k,j);let m={'value':null},n=![];return l[J(0x1bf)](new WritableStream({async 'write'(o,p){const L=J;if(n)return await a0z(o,f,null,j);if(m[L(0x1f7)]){const x=m[L(0x1f7)][L(0x21b)][L(0x1c6)]();await x[L(0x201)](o),x[L(0x218)]();return;}const {hasError:q,message:r,addressType:s,portRemote:portRemote=0x1bb,addressRemote:addressRemote='',rawDataIndex:t,dynamicProtocolVersion:dynamicProtocolVersion=new Uint8Array([0x0,0x0]),isUDP:u}=a0p(o,a0f);g=addressRemote,h=portRemote+'--'+Math[L(0x1f4)]()+'\x20'+(u?L(0x1ce):L(0x1b3))+'\x20';if(q){j(L(0x22d)+r),a0v(f);throw new Error(r);}if(u){if(portRemote===0x35)n=!![];else{j('UDP\x20proxy\x20only\x20enabled\x20for\x20DNS\x20which\x20is\x20port\x2053'),a0v(f);throw new Error(L(0x1f5));}}const v=new Uint8Array([dynamicProtocolVersion[0x0],0x0]),w=o[L(0x1d4)](t);if(n)return a0z(w,f,v,j);await a0n(m,addressRemote,portRemote,w,f,v,j,b,c,a0j);},'close'(){const M=J;j(M(0x213));},'abort'(o){const N=J;j('readableWebSocketStream\x20is\x20abort',JSON[N(0x1b6)](o));}}))['catch'](o=>{const O=J;j(O(0x219),o);}),new Response(null,{'status':0x65,'webSocket':e});}async function a0n(a,b,c,d,e,f,g,h,j,k){const P=a0G;let l;try{g(P(0x1b0)+b+':'+c),l=connect({'hostname':b,'port':c}),await l[P(0x226)],g('[Success\x201/3]\x20Successfully\x20connected\x20directly\x20to\x20'+b+':'+c);}catch(m){console[P(0x1e6)]('[Error\x201/3]\x20Direct\x20connection\x20failed\x20for\x20'+b+':'+c+':',m[P(0x1d0)]||m[P(0x1dd)]||m);if(k)try{g(P(0x212)+b+':'+c);const {tcpSocket:n}=await a0D(b,c);l=n,g(P(0x224)+b+':'+c);}catch(o){console[P(0x1e6)](P(0x1d9)+b+':'+c+':',o[P(0x1d0)]||o['message']||o);if(h){g('[Attempt\x203/3]\x20NAT64\x20failed,\x20attempting\x20to\x20fall\x20back\x20to\x20proxyIP:\x20'+h+':'+j);try{l=connect({'hostname':h,'port':j}),await l[P(0x226)],g(P(0x1cd)+h+':'+j);}catch(p){console[P(0x1e6)]('[Error\x203/3]\x20Fallback\x20to\x20proxyIP\x20failed\x20for\x20'+h+':'+j+':',p[P(0x1d0)]||p[P(0x1dd)]||p),a0v(e);return;}}else{console[P(0x1e6)]('[Error]\x20NAT64\x20failed\x20and\x20no\x20fallback\x20proxyIP\x20provided.\x20Closing\x20WebSocket.'),a0v(e);return;}}else{g('[Skipping\x20NAT64]\x20NAT64\x20is\x20disabled,\x20skipping\x20attempt.');if(h){g(P(0x1d8)+h+':'+j);try{l=connect({'hostname':h,'port':j}),await l[P(0x226)],g(P(0x1da)+h+':'+j);}catch(q){console[P(0x1e6)](P(0x1ef)+h+':'+j+':',q[P(0x1d0)]||q[P(0x1dd)]||q),a0v(e);return;}}else{console['error'](P(0x217)),a0v(e);return;}}}if(l){a[P(0x1f7)]=l;const r=l['writable'][P(0x1c6)]();await r[P(0x201)](d),r[P(0x218)](),a0q(l,e,f,null,g);}else console[P(0x1e6)]('No\x20TCP\x20socket\x20established\x20after\x20all\x20connection\x20attempts.\x20Closing\x20WebSocket.'),a0v(e);}function a0a(){const ac=['\x0a\x20\x20network:\x20ws\x0a\x20\x20tls:\x20true\x0a\x20\x20udp:\x20false\x0a\x20\x20sni:\x20','safeCloseWebSocket\x20error','decode','[Attempt\x202/2]\x20Direct\x20failed\x20and\x20NAT64\x20disabled,\x20attempting\x20to\x20fall\x20back\x20to\x20proxyIP:\x20','[Error\x202/3]\x20NAT64\x20connection\x20failed\x20for\x20','[Success\x202/2]\x20Successfully\x20connected\x20via\x20proxyIP\x20to\x20','ess','370623lRJqUN','message','data','map','\x20is\x20not\x20support,\x20command\x2001-tcp,02-udp,03-mux','split','Stringified\x20UUID\x20is\x20invalid','get','\x0a\x20\x20server:\x20','json','error','join','getUint16','最终解析的\x20proxyPort:\x20','DNS\x20resolution\x20for\x20NAT64\x20failed:\x20','&type=A','connected\x20to\x20','log','9188034pWRIpf','[Error\x202/2]\x20Fallback\x20to\x20proxyIP\x20failed\x20for\x20','环境变量\x20隐藏\x20原始值\x20(中文):\x20','abort','byteLength','1340488HPupkq','random','UDP\x20proxy\x20only\x20enable\x20for\x20DNS\x20which\x20is\x20port\x2053','HIDE_SUBSCRIPTION','value','arrayBuffer','8.8.8.8','status','UUID','https://cf-worker-dir-bke.pages.dev','readyState','invalid\x20user','test','sec-websocket-protocol','write','dns\x20server(','addressValue\x20is\x20empty,\x20addressType\x20is\x20','环境变量\x20SARCASM_MESSAGE\x20原始值\x20(英文):\x20','哎呀你找到了我，但是我就是不给你看，气不气，嘿嘿嘿',':443','环境变量\x20嘲讽语\x20原始值\x20(中文):\x20','<!DOCTYPE\x20html>\x0a\x20\x20\x20\x20\x20\x20\x20<html>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20<head><title>Welcome</title></head>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20<body><h1>Cloudflare\x20Worker\x20已部署成功</h1>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>此页面为静态伪装页面（远程加载失败）。</p></body>\x0a\x20\x20\x20\x20\x20\x20\x20</html>','webSocketServer\x20has\x20error','环境变量\x20NAT64\x20原始值:\x20','PROXYIP','DNS\x20query\x20failed\x20with\x20status:\x20','application/dns-json','close','remoteConnection!.readable\x20abort','SARCASM_MESSAGE','Invalid\x20IPv4\x20address\x20format\x20for\x20NAT64\x20conversion.','[Attempt\x202/3]\x20Direct\x20failed,\x20attempting\x20NAT64\x20connection\x20to\x20','readableWebSocketStream\x20is\x20close','最终解析的布尔值\x20NAT64:\x20','enqueue','webSocket.readyState\x20is\x20not\x20open,\x20maybe\x20close','[Error]\x20Direct\x20connection\x20failed,\x20NAT64\x20is\x20disabled,\x20and\x20no\x20fallback\x20proxyIP\x20provided.\x20Closing\x20WebSocket.','releaseLock','readableWebSocketStream\x20pipeTo\x20error','Host','writable','values','type','push','https://1.1.1.1/dns-query?name=','嘲讽语','remoteSocketToWS\x20has\x20exception\x20','text/plain;charset=utf-8','d342d11e-d424-4583-b36e-524ab1f0afa4','[Success\x202/3]\x20Successfully\x20connected\x20via\x20NAT64\x20to\x20','text/html;\x20charset=utf-8','opened','charCodeAt','No\x20A\x20record\x20found\x20for\x20domain\x20or\x20unable\x20to\x20resolve\x20IPv4\x20address.','\x0a\x20\x20port:\x20443\x0a\x20\x20uuid:\x20','from','uuid\x20is\x20not\x20valid','5880380spLvbu','Error\x20parsing\x20VLESS\x20header:\x20','AbortError','[Attempt\x201/3]\x20Attempting\x20direct\x20connection\x20to\x20','Not\x20found','7049896znnMrx','tcp\x20','?encryption=none&security=tls&sni=','ReadableStream\x20was\x20canceled,\x20due\x20to\x20','stringify','addEventListener','true','环境变量\x20PROXYIP\x20原始值:\x20','环境变量\x20HIDE_SUBSCRIPTION\x20原始值\x20(英文):\x20','readable','Upgrade',')\x20tcp\x20is\x20close','headers','pipeTo','NAT64','Answer','url','send','padStart','length','getWriter','\x0a---------------------------------------------------------------\x0a################################################################\x0a','Invalid\x20IPv4\x20address\x20segment\x20for\x20NAT64\x20conversion.','catch','toString','invild\x20\x20addressType\x20is\x20','toLowerCase','[Success\x203/3]\x20Successfully\x20connected\x20via\x20proxyIP\x20to\x20','udp\x20','1121232BEfDpw','stack','最终解析的嘲讽语:\x20','find','1912328XiczrL','slice'];a0a=function(){return ac;};return a0a();}function a0o(a,b,c){let d=![];const e=new ReadableStream({'start'(f){const Q=a0b;a[Q(0x1b7)](Q(0x1dd),j=>{const R=Q;if(d)return;const k=j[R(0x1de)];f[R(0x215)](k);}),a['addEventListener'](Q(0x20e),()=>{const S=Q;a0v(a);if(d)return;f[S(0x20e)]();}),a['addEventListener'](Q(0x1e6),j=>{const T=Q;c(T(0x209)),f['error'](j);});const {earlyData:g,error:h}=a0r(b);if(h)f[Q(0x1e6)](h);else g&&f['enqueue'](g);},'pull'(f){},'cancel'(f){const U=a0b;if(d)return;c(U(0x1b5)+f),d=!![],a0v(a);}});return e;}function a0p(a,b){const V=a0G;if(a[V(0x1f2)]<0x18)return{'hasError':!![],'message':'invalid\x20data'};const c=new Uint8Array(a[V(0x1d4)](0x0,0x1));let d=![],e=![];a0y(new Uint8Array(a[V(0x1d4)](0x1,0x11)))===b&&(d=!![]);if(!d)return{'hasError':!![],'message':V(0x1fe)};const f=new Uint8Array(a[V(0x1d4)](0x11,0x12))[0x0],g=new Uint8Array(a[V(0x1d4)](0x12+f,0x12+f+0x1))[0x0];if(g===0x1){}else{if(g===0x2)e=!![];else return{'hasError':!![],'message':'command\x20'+g+V(0x1e0)};}const h=0x12+f+0x1,j=a[V(0x1d4)](h,h+0x2),k=new DataView(j)[V(0x1e8)](0x0);let l=h+0x2;const m=new Uint8Array(a['slice'](l,l+0x1)),n=m[0x0];let o=0x0,p=l+0x1,q='';switch(n){case 0x1:o=0x4,q=new Uint8Array(a[V(0x1d4)](p,p+o))['join']('.');break;case 0x2:o=new Uint8Array(a[V(0x1d4)](p,p+0x1))[0x0],p+=0x1,q=new TextDecoder()[V(0x1d7)](a[V(0x1d4)](p,p+o));break;case 0x3:o=0x10;const r=new DataView(a[V(0x1d4)](p,p+o)),s=[];for(let t=0x0;t<0x8;t++){s[V(0x21e)](r[V(0x1e8)](t*0x2)['toString'](0x10));}q=s[V(0x1e7)](':');break;default:return{'hasError':!![],'message':V(0x1cb)+n};}if(!q)return{'hasError':!![],'message':V(0x203)+n};return{'hasError':![],'addressRemote':q,'addressType':n,'portRemote':k,'rawDataIndex':p+o,'dynamicProtocolVersion':c,'isUDP':e};}async function a0q(a,b,c,d,e){const W=a0G;let f=c,g=![];await a[W(0x1bb)][W(0x1bf)](new WritableStream({'start'(){},async 'write'(h,j){const X=W;g=!![],b[X(0x1fd)]!==a0t&&j[X(0x1e6)](X(0x216)),f?(b[X(0x1c3)](await new Blob([f,h])[X(0x1f8)]()),f=null):b[X(0x1c3)](h);},'close'(){e('remoteConnection!.readable\x20is\x20close\x20with\x20hasIncomingData\x20is\x20'+g),a0v(b);},'abort'(h){const Y=W;console[Y(0x1e6)](Y(0x20f),h),a0v(b);}}))[W(0x1c9)](h=>{const Z=W;console[Z(0x1e6)](Z(0x221),h['stack']||h),a0v(b);});}function a0r(a){const a0=a0G;if(!a)return{'error':null};try{a=a['replace'](/-/g,'+')['replace'](/_/g,'/');const b=atob(a),c=Uint8Array[a0(0x22a)](b,d=>d[a0(0x227)](0x0));return{'earlyData':c['buffer'],'error':null};}catch(d){return{'error':d};}}function a0s(a){const b=/^[0-9a-f]{8}-[0-9a-f]{4}-[4][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;return b['test'](a);}const a0t=0x1,a0u=0x2;function a0v(a){const a1=a0G;try{(a[a1(0x1fd)]===a0t||a[a1(0x1fd)]===a0u)&&a[a1(0x20e)]();}catch(b){console[a1(0x1e6)](a1(0x1d6),b);}}const a0w=[];for(let a0E=0x0;a0E<0x100;++a0E){a0w[a0G(0x21e)]((a0E+0x100)[a0G(0x1ca)](0x10)[a0G(0x1d4)](0x1));}function a0x(a,b=0x0){const a2=a0G;return(a0w[a[b+0x0]]+a0w[a[b+0x1]]+a0w[a[b+0x2]]+a0w[a[b+0x3]]+'-'+a0w[a[b+0x4]]+a0w[a[b+0x5]]+'-'+a0w[a[b+0x6]]+a0w[a[b+0x7]]+'-'+a0w[a[b+0x8]]+a0w[a[b+0x9]]+'-'+a0w[a[b+0xa]]+a0w[a[b+0xb]]+a0w[a[b+0xc]]+a0w[a[b+0xd]]+a0w[a[b+0xe]]+a0w[a[b+0xf]])[a2(0x1cc)]();}function a0y(a,b=0x0){const a3=a0G,c=a0x(a,b);if(!a0s(c))throw TypeError(a3(0x1e2));return c;}async function a0z(a,b,c,d){const a4=a0G;try{const e=a4(0x1f9),f=0x35;let g=c;const h=connect({'hostname':e,'port':f});d(a4(0x1ec)+e+':'+f);const j=h[a4(0x21b)][a4(0x1c6)]();await j[a4(0x201)](a),j['releaseLock'](),await h[a4(0x1bb)]['pipeTo'](new WritableStream({async 'write'(k){const a5=a4;b[a5(0x1fd)]===a0t&&(g?(b[a5(0x1c3)](await new Blob([g,k])[a5(0x1f8)]()),g=null):b[a5(0x1c3)](k));},'close'(){const a6=a4;d(a6(0x202)+e+a6(0x1bd));},'abort'(k){console['error']('dns\x20server('+e+')\x20tcp\x20is\x20abort',k);}}));}catch(k){console[a4(0x1e6)]('handleDNSQuery\x20have\x20exception,\x20error:\x20'+k[a4(0x1dd)]);}}function a0A(a,b){const a7=a0G,c=a0c+a0d,d=''+c+a0e+a+'@'+b+a7(0x206)+(a7(0x1b4)+b+'&fp=randomized&type=ws&host='+b+'&path=%2F%3Fed%3D2048#'+b);return'\x0a################################################################\x0av2ray\x0a---------------------------------------------------------------\x0a'+d+'\x0a---------------------------------------------------------------\x0a################################################################\x0aclash-meta\x0a---------------------------------------------------------------\x0a-\x20type:\x20'+(a0c+a0d)+'\x0a\x20\x20name:\x20'+b+a7(0x1e4)+b+a7(0x229)+a+a7(0x1d5)+b+'\x0a\x20\x20client-fingerprint:\x20chrome\x0a\x20\x20ws-opts:\x0a\x20\x20\x20\x20path:\x20\x22/?ed=2048\x22\x0a\x20\x20\x20\x20headers:\x0a\x20\x20\x20\x20\x20\x20host:\x20'+b+a7(0x1c7);}function a0B(a){const a8=a0G,b=a[a8(0x1e1)]('.');if(b[a8(0x1c5)]!==0x4)throw new Error(a8(0x211));const c=b[a8(0x1df)](d=>{const a9=a8,e=parseInt(d,0xa);if(e<0x0||e>0xff)throw new Error(a9(0x1c8));return e['toString'](0x10)[a9(0x1c4)](0x2,'0');});return'2602:fc59:b0:64::'+c[0x0]+c[0x1]+':'+c[0x2]+c[0x3];}async function a0C(a){const aa=a0G,b=new AbortController(),c=setTimeout(()=>b[aa(0x1f1)](),0x1388);try{const d=await fetch(aa(0x21f)+a+aa(0x1eb),{'headers':{'Accept':aa(0x20d)},'signal':b['signal']});clearTimeout(c);if(!d['ok'])throw new Error(aa(0x20c)+d[aa(0x1fa)]);const e=await d[aa(0x1e5)]();if(e[aa(0x1c1)]&&e[aa(0x1c1)][aa(0x1c5)]>0x0){const f=e[aa(0x1c1)][aa(0x1d2)](g=>g[aa(0x21d)]===0x1);if(f){const g=f[aa(0x1de)];return a0B(g);}}throw new Error(aa(0x228));}catch(h){clearTimeout(c);if(h['name']===aa(0x22e))throw new Error('DNS\x20resolution\x20for\x20NAT64\x20timed\x20out\x20for\x20domain:\x20'+a);throw new Error(aa(0x1ea)+h[aa(0x1dd)]);}}async function a0D(a,b){const ab=a0G;let c;const d=/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/;d[ab(0x1ff)](a)?c=a0B(a):c=await a0C(a);const e=connect({'hostname':'['+c+']','port':b});return await e[ab(0x226)],{'tcpSocket':e};}
+import { connect } from 'cloudflare:sockets';
+
+// 默认配置
+let protocolPrefix = 'vless';
+let defaultUUID = 'd342d11e-d424-4583-b36e-524ab1f0afa4';
+let proxyIP = 'proxyip.zone.id';
+let proxyPort = 443;
+let enableNAT64 = false;
+let fakePageUrl = 'https://cf-worker-dir-bke.pages.dev';
+
+/**
+ * 获取伪装网页
+ */
+async function getFakePage() {
+    try {
+        const response = await fetch(fakePageUrl, { 'cf': { 'cacheEverything': true } });
+        return new Response(response.body, response);
+    } catch {
+        return new Response(
+            '<!DOCTYPE html><html><head><title>Welcome</title></head><body><h1>Cloudflare Worker 已部署成功</h1><p>此页面为静态伪装页面（远程加载失败）。</p></body></html>',
+            { status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8' } }
+        );
+    }
+}
+
+// 验证 UUID 格式
+if (!isValidUUID(defaultUUID)) throw new Error('uuid is not valid');
+
+export default {
+    async fetch(request, env, ctx) {
+        try {
+            // 从环境变量读取配置
+            defaultUUID = env.UUID || defaultUUID;
+            
+            if (env.PROXYIP) {
+                const parts = env.PROXYIP.split(':');
+                proxyIP = parts[0];
+                proxyPort = parts.length > 1 ? parseInt(parts[1], 10) : 443;
+            }
+
+            // 解析是否隐藏订阅
+            let isHidden = false;
+            let sarcasmMessage = '哎呀你找到了我，但是我就是不给你看，气不气，嘿嘿嘿';
+
+            if (env.HIDE_SUBSCRIPTION !== undefined) {
+                isHidden = env.HIDE_SUBSCRIPTION === 'true';
+            } else if (env.隐藏 !== undefined) {
+                isHidden = env.隐藏 === 'true';
+            }
+
+            if (env.SARCASM_MESSAGE !== undefined) {
+                sarcasmMessage = env.SARCASM_MESSAGE;
+            } else if (env.嘲讽语 !== undefined) {
+                sarcasmMessage = env.嘲讽语;
+            }
+
+            if (env.NAT64 !== undefined) {
+                enableNAT64 = env.NAT64 === 'true';
+            }
+
+            // 打印日志以便调试
+            console.log('环境变量 HIDE_SUBSCRIPTION 原始值 (英文): ' + env.HIDE_SUBSCRIPTION);
+            console.log('环境变量 隐藏 原始值 (中文): ' + env.隐藏);
+            console.log('最终解析的布尔值 隐藏: ' + isHidden);
+            console.log('环境变量 SARCASM_MESSAGE 原始值 (英文): ' + env.SARCASM_MESSAGE);
+            console.log('环境变量 嘲讽语 原始值 (中文): ' + env.嘲讽语);
+            console.log('最终解析的嘲讽语: ' + sarcasmMessage);
+            console.log('环境变量 NAT64 原始值: ' + env.NAT64);
+            console.log('最终解析的布尔值 NAT64: ' + enableNAT64);
+            console.log('环境变量 PROXYIP 原始值: ' + env.PROXYIP);
+            console.log('最终解析的 proxyIP: ' + proxyIP);
+            console.log('最终解析的 proxyPort: ' + proxyPort);
+
+            const upgradeHeader = request.headers.get('Upgrade');
+            if (!upgradeHeader || upgradeHeader !== 'websocket') {
+                const url = new URL(request.url);
+                switch (url.pathname) {
+                    case '/':
+                        return getFakePage();
+                    case '/' + defaultUUID:
+                        if (isHidden) {
+                            return new Response(sarcasmMessage, { status: 200, headers: { 'Content-Type': 'text/plain;charset=utf-8' } });
+                        } else {
+                            const configText = generateConfig(defaultUUID, request.headers.get('Host'));
+                            return new Response(configText, { status: 200, headers: { 'Content-Type': 'text/plain;charset=utf-8' } });
+                        }
+                    default:
+                        return new Response('Not found', { status: 404 });
+                }
+            } else {
+                return await handleWebSocketRoute(request, proxyIP, proxyPort);
+            }
+        } catch (err) {
+            return new Response(err.toString());
+        }
+    }
+};
+
+/**
+ * 处理 WebSocket 代理路由
+ */
+async function handleWebSocketRoute(request, pIP, pPort) {
+    const webSocketPair = new WebSocketPair();
+    const [clientWS, serverWS] = Object.values(webSocketPair);
+    serverWS.accept();
+
+    let remoteHost = '', remotePort = '';
+    const log = (msg, err) => {
+        console.log(`[${remoteHost}:${remotePort}] ${msg}`, err || '');
+    };
+
+    const earlyDataHeader = request.headers.get('sec-websocket-protocol') || '';
+    const readableStream = makeReadableStream(serverWS, earlyDataHeader, log);
+
+    let remoteConnection = { value: null };
+    let isDnsQuery = false;
+
+    readableStream.pipeTo(new WritableStream({
+        async write(chunk, controller) {
+            if (isDnsQuery) {
+                return await forwardDnsQuery(chunk, serverWS, null, log);
+            }
+
+            if (remoteConnection.value) {
+                const writer = remoteConnection.value.writable.getWriter();
+                await writer.write(chunk);
+                writer.releaseLock();
+                return;
+            }
+
+            // 解析 VLESS 头部
+            const header = parseVlessHeader(chunk, defaultUUID);
+            remoteHost = header.addressRemote;
+            remotePort = header.portRemote + '--' + Math.random() + ' ' + (header.isUDP ? 'udp ' : 'tcp ');
+
+            if (header.hasError) {
+                log('Error parsing VLESS header: ' + header.message);
+                safeCloseWebSocket(serverWS);
+                throw new Error(header.message);
+            }
+
+            if (header.isUDP) {
+                if (header.portRemote === 53) {
+                    isDnsQuery = true;
+                } else {
+                    log('UDP proxy only enabled for DNS which is port 53');
+                    safeCloseWebSocket(serverWS);
+                    throw new Error('UDP proxy only enable for DNS which is port 53');
+                }
+            }
+
+            const responseHeader = new Uint8Array([header.dynamicProtocolVersion[0], 0]);
+            const rawData = chunk.slice(header.rawDataIndex);
+
+            if (isDnsQuery) {
+                return forwardDnsQuery(rawData, serverWS, responseHeader, log);
+            }
+
+            await establishRemoteConnection(remoteConnection, header.addressRemote, header.portRemote, rawData, serverWS, responseHeader, log, pIP, pPort, enableNAT64);
+        },
+        close() {
+            log('readableWebSocketStream is close');
+        },
+        abort(err) {
+            log('readableWebSocketStream is abort', JSON.stringify(err));
+        }
+    })).catch(err => {
+        log('readableWebSocketStream pipeTo error', err);
+    });
+
+    return new Response(null, { status: 101, webSocket: clientWS });
+}
+
+/**
+ * 建立到远程目标服务器的 TCP 连接（包含多重降级逻辑）
+ */
+async function establishRemoteConnection(connWrap, host, port, initialData, ws, respHeader, log, pIP, pPort, nat64Enabled) {
+    let socket;
+    try {
+        log('[Attempt 1/3] Attempting direct connection to ' + host + ':' + port);
+        socket = connect({ hostname: host, port: port });
+        await socket.opened;
+        log('[Success 1/3] Successfully connected directly to ' + host + ':' + port);
+    } catch (err) {
+        console.error('[Error 1/3] Direct connection failed for ' + host + ':' + port + ':', err.stack || err.message || err);
+        
+        if (nat64Enabled) {
+            try {
+                log('[Attempt 2/3] Direct failed, attempting NAT64 connection to ' + host + ':' + port);
+                const { tcpSocket } = await connectWithNAT64(host, port);
+                socket = tcpSocket;
+                log('[Success 2/3] Successfully connected via NAT64 to ' + host + ':' + port);
+            } catch (natErr) {
+                console.error('[Error 2/3] NAT64 connection failed for ' + host + ':' + port + ':', natErr.stack || natErr.message || natErr);
+                if (pIP) {
+                    log('[Attempt 3/3] NAT64 failed, attempting to fall back to proxyIP: ' + pIP + ':' + pPort);
+                    try {
+                        socket = connect({ hostname: pIP, port: pPort });
+                        await socket.opened;
+                        log('[Success 3/3] Successfully connected via proxyIP to ' + pIP + ':' + pPort);
+                    } catch (proxyErr) {
+                        console.error('[Error 3/3] Fallback to proxyIP failed for ' + pIP + ':' + pPort + ':', proxyErr.stack || proxyErr.message || proxyErr);
+                        safeCloseWebSocket(ws);
+                        return;
+                    }
+                } else {
+                    console.error('[Error] NAT64 failed and no fallback proxyIP provided. Closing WebSocket.');
+                    safeCloseWebSocket(ws);
+                    return;
+                }
+            }
+        } else {
+            log('[Skipping NAT64] NAT64 is disabled, skipping attempt.');
+            if (pIP) {
+                log('[Attempt 2/2] Direct failed and NAT64 disabled, attempting to fall back to proxyIP: ' + pIP + ':' + pPort);
+                try {
+                    socket = connect({ hostname: pIP, port: pPort });
+                    await socket.opened;
+                    log('[Success 2/2] Successfully connected via proxyIP to ' + pIP + ':' + pPort);
+                } catch (proxyErr) {
+                    console.error('[Error 2/2] Fallback to proxyIP failed for ' + pIP + ':' + pPort + ':', proxyErr.stack || proxyErr.message || proxyErr);
+                    safeCloseWebSocket(ws);
+                    return;
+                }
+            } else {
+                console.error('[Error] Direct connection failed, NAT64 is disabled, and no fallback proxyIP provided. Closing WebSocket.');
+                safeCloseWebSocket(ws);
+                return;
+            }
+        }
+    }
+
+    if (socket) {
+        connWrap.value = socket;
+        const writer = socket.writable.getWriter();
+        await writer.write(initialData);
+        writer.releaseLock();
+        pipeRemoteToWebSocket(socket, ws, respHeader, null, log);
+    } else {
+        console.error('No TCP socket established after all connection attempts. Closing WebSocket.');
+        safeCloseWebSocket(ws);
+    }
+}
+
+/**
+ * 包装 WebSocket 接收流
+ */
+function makeReadableStream(ws, earlyDataHeader, log) {
+    let isCanceled = false;
+    return new ReadableStream({
+        start(controller) {
+            ws.addEventListener('message', async (event) => {
+                if (isCanceled) return;
+                let data = event.data;
+                if (data instanceof Blob) {
+                    data = await data.arrayBuffer();
+                }
+                controller.enqueue(data);
+            });
+            ws.addEventListener('close', () => {
+                safeCloseWebSocket(ws);
+                if (isCanceled) return;
+                controller.close();
+            });
+            ws.addEventListener('error', (err) => {
+                log('webSocketServer has error');
+                controller.error(err);
+            });
+
+            const { earlyData, error } = parseEarlyData(earlyDataHeader);
+            if (error) controller.error(error);
+            else if (earlyData) controller.enqueue(earlyData);
+        },
+        pull(controller) {},
+        cancel(reason) {
+            if (isCanceled) return;
+            log('ReadableStream was canceled, due to ' + reason);
+            isCanceled = true;
+            safeCloseWebSocket(ws);
+        }
+    });
+}
+
+/**
+ * 解析 VLESS 协议数据包头部
+ */
+function parseVlessHeader(chunk, expectedUUID) {
+    if (chunk.byteLength < 24) return { 'hasError': true, 'message': 'invalid data' };
+    
+    const version = new Uint8Array(chunk.slice(0, 1));
+    let uuidMatched = false;
+    if (stringifyUUID(new Uint8Array(chunk.slice(1, 17))) === expectedUUID) {
+        uuidMatched = true;
+    }
+    
+    if (!uuidMatched) return { 'hasError': true, 'message': 'invalid user' };
+
+    const addonsLength = new Uint8Array(chunk.slice(17, 18))[0];
+    const command = new Uint8Array(chunk.slice(18 + addonsLength, 18 + addonsLength + 1))[0];
+    
+    let isUDP = false;
+    if (command === 1) {
+        // TCP
+    } else if (command === 2) {
+        isUDP = true;
+    } else {
+        return { 'hasError': true, 'message': 'command ' + command + ' is not support, command 01-tcp,02-udp,03-mux' };
+    }
+
+    const portIndex = 19 + addonsLength;
+    const portBuffer = chunk.slice(portIndex, portIndex + 2);
+    const portRemote = new DataView(portBuffer).getUint16(0);
+
+    let addressIndex = portIndex + 2;
+    const addressTypeBuffer = new Uint8Array(chunk.slice(addressIndex, addressIndex + 1));
+    const addressType = addressTypeBuffer[0];
+
+    let addressLength = 0;
+    let addressValueIndex = addressIndex + 1;
+    let addressRemote = '';
+
+    switch (addressType) {
+        case 1: // IPv4
+            addressLength = 4;
+            addressRemote = new Uint8Array(chunk.slice(addressValueIndex, addressValueIndex + addressLength)).join('.');
+            break;
+        case 2: // 域名
+            addressLength = new Uint8Array(chunk.slice(addressValueIndex, addressValueIndex + 1))[0];
+            addressValueIndex += 1;
+            addressRemote = new TextDecoder().decode(chunk.slice(addressValueIndex, addressValueIndex + addressLength));
+            break;
+        case 3: // IPv6
+            addressLength = 16;
+            const ipv6View = new DataView(chunk.slice(addressValueIndex, addressValueIndex + addressLength));
+            const ipv6Segments = [];
+            for (let i = 0; i < 8; i++) {
+                ipv6Segments.push(ipv6View.getUint16(i * 2).toString(16));
+            }
+            addressRemote = ipv6Segments.join(':');
+            break;
+        default:
+            return { 'hasError': true, 'message': 'invild  addressType is ' + addressType };
+    }
+
+    if (!addressRemote) {
+        return { 'hasError': true, 'message': 'addressValue is empty, addressType is ' + addressType };
+    }
+
+    return {
+        hasError: false,
+        addressRemote,
+        addressType,
+        portRemote,
+        rawDataIndex: addressValueIndex + addressLength,
+        dynamicProtocolVersion: version,
+        isUDP
+    };
+}
+
+/**
+ * 将远程服务器的数据管道传输回 WebSocket 客户端
+ */
+async function pipeRemoteToWebSocket(remoteSocket, ws, responseHeader, retryFunc, log) {
+    let header = responseHeader;
+    let hasIncomingData = false;
+
+    await remoteSocket.readable.pipeTo(new WritableStream({
+        start() {},
+        async write(chunk, controller) {
+            hasIncomingData = true;
+            if (ws.readyState !== 1) { // 1 = OPEN
+                controller.error('webSocket.readyState is not open, maybe close');
+            }
+            if (header) {
+                ws.send(await new Blob([header, chunk]).arrayBuffer());
+                header = null;
+            } else {
+                ws.send(chunk);
+            }
+        },
+        close() {
+            log('remoteConnection!.readable is close with hasIncomingData is ' + hasIncomingData);
+            safeCloseWebSocket(ws);
+        },
+        abort(err) {
+            console.error('remoteConnection!.readable abort', err);
+            safeCloseWebSocket(ws);
+        }
+    })).catch(err => {
+        console.error('remoteSocketToWS has exception ', err.stack || err);
+        safeCloseWebSocket(ws);
+    });
+}
+
+/**
+ * 解析早期数据 (Early Data / Base64)
+ */
+function parseEarlyData(header) {
+    if (!header) return { error: null };
+    try {
+        header = header.replace(/-/g, '+').replace(/_/g, '/');
+        const binaryStr = atob(header);
+        const bytes = Uint8Array.from(binaryStr, char => char.charCodeAt(0));
+        return { earlyData: bytes.buffer, error: null };
+    } catch (err) {
+        return { error: err };
+    }
+}
+
+// UUID 格式正则验证
+function isValidUUID(uuid) {
+    const regex = /^[0-9a-f]{8}-[0-9a-f]{4}-[4][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    return regex.test(uuid);
+}
+
+function safeCloseWebSocket(ws) {
+    try {
+        if (ws.readyState === 1 || ws.readyState === 2) {
+            ws.close();
+        }
+    } catch (err) {
+        console.error('safeCloseWebSocket error', err);
+    }
+}
+
+// 快速字节映射转换
+const byteToHex = [];
+for (let i = 0; i < 266; ++i) {
+    byteToHex.push((i + 256).toString(16).slice(1));
+}
+
+function convertBytesToUUID(buf, offset = 0) {
+    return (
+        byteToHex[buf[offset + 0]] + byteToHex[buf[offset + 1]] + byteToHex[buf[offset + 2]] + byteToHex[buf[offset + 3]] + '-' +
+        byteToHex[buf[offset + 4]] + byteToHex[buf[offset + 5]] + '-' +
+        byteToHex[buf[offset + 6]] + byteToHex[buf[offset + 7]] + '-' +
+        byteToHex[buf[offset + 8]] + byteToHex[buf[offset + 9]] + '-' +
+        byteToHex[buf[offset + 10]] + byteToHex[buf[offset + 11]] + byteToHex[buf[offset + 12]] + byteToHex[buf[offset + 13]] + byteToHex[buf[offset + 14]] + byteToHex[buf[offset + 15]]
+    ).toLowerCase();
+}
+
+function stringifyUUID(buf, offset = 0) {
+    const uuidStr = convertBytesToUUID(buf, offset);
+    if (!isValidUUID(uuidStr)) throw TypeError('Stringified UUID is invalid');
+    return uuidStr;
+}
+
+/**
+ * 转发 UDP DNS 请求到公网 DNS 服务器 (8.8.8.8)
+ */
+async function forwardDnsQuery(udpChunk, ws, responseHeader, log) {
+    try {
+        const dnsServer = '8.8.8.8';
+        const dnsPort = 53;
+        let vlessHeader = responseHeader;
+
+        const dnsSocket = connect({ hostname: dnsServer, port: dnsPort });
+        log('dns server(' + dnsServer + ':53');
+
+        const writer = dnsSocket.writable.getWriter();
+        await writer.write(udpChunk);
+        writer.releaseLock();
+
+        await dnsSocket.readable.pipeTo(new WritableStream({
+            async write(chunk) {
+                if (ws.readyState === 1) { // OPEN
+                    if (vlessHeader) {
+                        ws.send(await new Blob([vlessHeader, chunk]).arrayBuffer());
+                        vlessHeader = null;
+                    } else {
+                        ws.send(chunk);
+                    }
+                }
+            },
+            close() {
+                log('dns server(' + dnsServer + ') tcp is close');
+            },
+            abort(err) {
+                console.error('dns server(' + dnsServer + ') tcp is abort', err);
+            }
+        }));
+    } catch (err) {
+        console.error('handleDNSQuery have exception, error: ' + err.message);
+    }
+}
+
+/**
+ * 生成配置订阅文件内容 (Clash / V2Ray)
+ */
+function generateConfig(uuid, host) {
+    const fullProtocol = protocolPrefix + '://';
+    const uri = fullProtocol + uuid + '@' + host + ':443?encryption=none&security=tls&sni=' + host + '&fp=randomized&type=ws&host=' + host + '&path=%2F%3Fed%3D2048#' + host;
+    
+    return (
+        '################################################################\n' +
+        'v2ray\n' +
+        '---------------------------------------------------------------\n' +
+        uri + '\n' +
+        '################################################################\n' +
+        'clash-meta\n' +
+        '---------------------------------------------------------------\n' +
+        '- type: ' + protocolPrefix + '\n' +
+        '  name: ' + host + '\n' +
+        '  server: ' + host + '\n' +
+        '  port: 443\n' +
+        '  uuid: ' + uuid + '\n' +
+        '  network: ws\n' +
+        '  tls: true\n' +
+        '  udp: false\n' +
+        '  sni: ' + host + '\n' +
+        '  client-fingerprint: chrome\n' +
+        '  ws-opts:\n' +
+        '    path: "/?ed=2048"\n' +
+        '    headers:\n' +
+        '      host: ' + host + '\n' +
+        '---------------------------------------------------------------\n' +
+        '################################################################'
+    );
+}
+
+/**
+ * 将 IPv4 映射转换为 NAT64 IPv6 地址
+ */
+function convertToNAT64Address(ipv4Str) {
+    const segments = ipv4Str.split('.');
+    if (segments.length !== 4) throw new Error('Invalid IPv4 address format for NAT64 conversion.');
+    
+    const hexSegments = segments.map(seg => {
+        const val = parseInt(seg, 10);
+        if (val < 0 || val > 255) throw new Error('Invalid IPv4 address segment for NAT64 conversion.');
+        return val.toString(16).padStart(2, '0');
+    });
+    
+    return '2602:fc59:b0:64::' + hexSegments[0] + hexSegments[1] + ':' + hexSegments[2] + hexSegments[3];
+}
+
+/**
+ * 借用 DoH (DNS over HTTPS) 解析并将其转换为 NAT64
+ */
+async function resolveNAT64(domain) {
+    const abortController = new AbortController();
+    const timeoutId = setTimeout(() => abortController.abort(), 5000);
+    
+    try {
+        const response = await fetch('https://1.1.1.1/dns-query?name=' + domain + '&type=A', {
+            headers: { 'Accept': 'application/dns-json' },
+            signal: abortController.signal
+        });
+        clearTimeout(timeoutId);
+
+        if (!response.ok) throw new Error('DNS query failed with status: ' + response.status);
+        const json = await response.json();
+
+        if (json.Answer && json.Answer.length > 0) {
+            const aRecord = json.Answer.find(rec => rec.type === 1); // 1 = A Record
+            if (aRecord) {
+                return convertToNAT64Address(aRecord.data);
+            }
+        }
+        throw new Error('No A record found for domain or unable to resolve IPv4 address.');
+    } catch (err) {
+        clearTimeout(timeoutId);
+        if (err.name === 'AbortError') throw new Error('DNS resolution for NAT64 timed out for domain: ' + domain);
+        throw new Error('DNS resolution for NAT64 failed: ' + err.message);
+    }
+}
+
+/**
+ * 通过 NAT64 建立连接
+ */
+async function connectWithNAT64(host, port) {
+    let targetIp;
+    const isIPv4 = /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/;
+
+    if (isIPv4.test(host)) {
+        targetIp = convertToNAT64Address(host);
+    } else {
+        targetIp = await resolveNAT64(host);
+    }
+
+    const socket = connect({ hostname: '[' + targetIp + ']', port: port });
+    await socket.opened;
+    return { tcpSocket: socket };
+}
