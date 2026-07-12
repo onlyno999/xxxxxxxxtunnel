@@ -127,18 +127,17 @@ function isSpeedTestSite(hostname) {
 }
 
 export default {
-	/**
-	 * @param {import("@cloudflare/workers-types").Request} request
-	 * @param {{UUID: string, uuid: string, PROXYIP: string, PASSWORD: string, PASSWD: string, password: string, proxyip: string, proxyIP: string, SUB_PATH: string, subpath: string}} env
-	 * @param {import("@cloudflare/workers-types").ExecutionContext} ctx
-	 * @returns {Promise<Response>}
-	 */
+    /**
+     * @param {import("@cloudflare/workers-types").Request} request
+     * @param {{UUID: string, uuid: string, PROXYIP: string, PASSWORD: string, PASSWD: string, password: string, proxyip: string, proxyIP: string, SUB_PATH: string, subpath: string}} env
+     * @param {import("@cloudflare/workers-types").ExecutionContext} ctx
+     * @returns {Promise<Response>}
+     */
     async fetch(request, env, ctx) {
         try {
-
-			if (subPath === 'link' || subPath === '') {
-				subPath = yourUUID;
-			}
+            if (subPath === 'link' || subPath === '') {
+                subPath = yourUUID;
+            }
 
             if (env.PROXYIP || env.proxyip || env.proxyIP) {
                 const servers = (env.PROXYIP || env.proxyip || env.proxyIP).split(',').map(s => s.trim());
@@ -235,7 +234,7 @@ export default {
 };
 
 /**
- * * @param {import("@cloudflare/workers-types").Request} request
+ * @param {import("@cloudflare/workers-types").Request} request
  */
 async function handleVlsRequest(request, customProxyIP) {
     const wssPair = new WebSocketPair();
@@ -275,7 +274,7 @@ async function handleVlsRequest(request, customProxyIP) {
             await forwardataTCP(hostname, port, rawData, serverSock, respHeader, remoteConnWrapper, customProxyIP);
         },
     })).catch((err) => {
-        // 异常捕获
+        // console.error('Readable pipe error:', err);
     });
 
     return new Response(null, { status: 101, webSocket: clientSock });
@@ -346,79 +345,6 @@ async function connect2Socks5(proxyConfig, targetHost, targetPort, initialData) 
     }
 }
 
-async function connect2Http(proxyConfig, targetHost, targetPort, initialData) {
-    const { host, port, username, password } = proxyConfig;
-    const socket = connect({ hostname: host, port: port });
-    const writer = socket.writable.getWriter();
-    const reader = socket.readable.getReader();
-    try {
-        let connectRequest = `CONNECT ${targetHost}:${targetPort} HTTP/1.1\r\n`;
-        connectRequest += `Host: ${targetHost}:${targetPort}\r\n`;
-        
-        if (username && password) {
-            const auth = btoa(`${username}:${password}`);
-            connectRequest += `Proxy-Authorization: Basic ${auth}\r\n`;
-        }
-        
-        connectRequest += `User-Agent: Mozilla/5.0\r\n`;
-        connectRequest += `Connection: keep-alive\r\n`;
-        connectRequest += '\r\n';
-        await writer.write(new TextEncoder().encode(connectRequest));
-        let responseBuffer = new Uint8Array(0);
-        let headerEndIndex = -1;
-        let bytesRead = 0;
-        const maxHeaderSize = 8192;
-        
-        while (headerEndIndex === -1 && bytesRead < maxHeaderSize) {
-            const { done, value } = await reader.read();
-            if (done) {
-                throw new Error('Connection closed before receiving HTTP response');
-            }
-            const newBuffer = new Uint8Array(responseBuffer.length + value.length);
-            newBuffer.set(responseBuffer);
-            newBuffer.set(value, responseBuffer.length);
-            responseBuffer = newBuffer;
-            bytesRead = responseBuffer.length;
-            
-            for (let i = 0; i < responseBuffer.length - 3; i++) {
-                if (responseBuffer[i] === 0x0d && responseBuffer[i + 1] === 0x0a &&
-                    responseBuffer[i + 2] === 0x0d && responseBuffer[i + 3] === 0x0a) {
-                    headerEndIndex = i + 4;
-                    break;
-                }
-            }
-        }
-        
-        if (headerEndIndex === -1) {
-            throw new Error('Invalid HTTP response');
-        }
-        
-        const headerText = new TextDecoder().decode(responseBuffer.slice(0, headerEndIndex));
-        const statusLine = headerText.split('\r\n')[0];
-        const statusMatch = statusLine.match(/HTTP\/\d\.\d\s+(\d+)/);
-        
-        if (!statusMatch) {
-            throw new Error(`Invalid response: ${statusLine}`);
-        }
-        
-        const statusCode = parseInt(statusMatch[1]);
-        if (statusCode < 200 || statusCode >= 300) {
-            throw new Error(`Connection failed: ${statusLine}`);
-        }
-        
-        await writer.write(initialData);
-        writer.releaseLock();
-        reader.releaseLock();
-        
-        return socket;
-    } catch (error) {
-        try { writer.releaseLock(); } catch (e) {}
-        try { reader.releaseLock(); } catch (e) {}
-        try { socket.close(); } catch (e) {}
-        throw error;
-    }
-}
-
 async function forwardataTCP(host, portNum, rawData, ws, respHeader, remoteConnWrapper, customProxyIP) {
     async function connectDirect(address, port, data) {
         const remoteSock = connect({ hostname: address, port: port });
@@ -448,15 +374,13 @@ async function forwardataTCP(host, portNum, rawData, ws, respHeader, remoteConnW
         let newSocket;
         if (proxyConfig.type === 'socks5') {
             newSocket = await connect2Socks5(proxyConfig, host, portNum, rawData);
-        } else if (proxyConfig.type === 'http' || proxyConfig.type === 'https') {
-            newSocket = await connect2Http(proxyConfig, host, portNum, rawData);
         } else {
             newSocket = await connectDirect(proxyConfig.host, proxyConfig.port, rawData);
         }
         
         remoteConnWrapper.socket = newSocket;
         newSocket.closed.catch(() => {}).finally(() => closeSocketQuietly(ws));
-        await connectStreams(newSocket, ws, respHeader, null);
+        connectStreams(newSocket, ws, respHeader, null);
     }
     
     if (shouldUseProxy) {
@@ -469,7 +393,7 @@ async function forwardataTCP(host, portNum, rawData, ws, respHeader, remoteConnW
         try {
             const initialSocket = await connectDirect(host, portNum, rawData);
             remoteConnWrapper.socket = initialSocket;
-            await connectStreams(initialSocket, ws, respHeader, connecttoPry);
+            connectStreams(initialSocket, ws, respHeader, connecttoPry);
         } catch (err) {
             await connecttoPry();
         }
@@ -533,9 +457,11 @@ function makeReadableStr(socket, earlyDataHeader) {
             socket.addEventListener('error', (err) => controller.error(err));
             const { earlyData, error } = base64ToArray(earlyDataHeader);
             if (error) {
-                controller.error(error);
+                Promise.resolve().then(() => controller.error(error));
             } else if (earlyData) {
-                if (!cancelled) controller.enqueue(earlyData);
+                Promise.resolve().then(() => {
+                    if (!cancelled) controller.enqueue(earlyData);
+                });
             }
         },
         cancel() { 
@@ -545,59 +471,30 @@ function makeReadableStr(socket, earlyDataHeader) {
     });
 }
 
-/**
- * 重构后的高性能双向流管道传输函数（彻底解决大流量限速与爆内存隐患）
- */
 async function connectStreams(remoteSocket, webSocket, headerData, retryFunc) {
-    let header = headerData;
-    let hasData = false;
-
-    // 建立一个可以接收 TCP 吐出数据的 WritableStream 
-    const tcpToWsStream = new WritableStream({
-        async write(chunk, controller) {
-            hasData = true;
-            
-            // 1. 严格检查 WebSocket 状态，如果不是 OPEN，直接终止管道
-            if (webSocket.readyState !== WS_READY_STATE_OPEN) {
-                controller.error('WebSocket is not in OPEN state');
-                return;
-            }
-
-            // 2. 高性能合并首包字节流，直接避免 Blob 异步转换带来的多余开销
-            let dataToSend = chunk;
-            if (header) { 
-                const response = new Uint8Array(header.length + chunk.byteLength);
-                response.set(header, 0);
-                response.set(chunk, header.length);
-                dataToSend = response.buffer;
-                header = null; 
-            } else {
-                dataToSend = chunk.buffer || chunk;
-            }
-
-            // 3. 核心限速调控策略：如果排队积压的数据包超过 1MB，则主动挂起 TCP 的读取，直到下行链路吃完积压
-            webSocket.send(dataToSend);
-            if (webSocket.bufferedAmount > 1024 * 1024) {
-                while (webSocket.bufferedAmount > 0) {
-                    if (webSocket.readyState !== WS_READY_STATE_OPEN) break;
-                    // 让出控制权挂起 10 毫秒，防止 OOM 爆内存或卡顿
-                    await new Promise(resolve => setTimeout(resolve, 10)); 
+    let header = headerData, hasData = false;
+    await remoteSocket.readable.pipeTo(
+        new WritableStream({
+            async write(chunk) {
+                hasData = true;
+                if (webSocket.readyState !== WS_READY_STATE_OPEN) {
+                    throw new Error('ws.readyState is not open');
                 }
-            }
-        },
-        close() {
-            closeSocketQuietly(webSocket);
-        },
-        abort(err) {
-            closeSocketQuietly(webSocket);
-        }
-    });
-
-    // 启动管道，并拦截和静默处理所有意外引发崩溃的断连异常
-    await remoteSocket.readable.pipeTo(tcpToWsStream).catch((err) => { 
+                if (header) { 
+                    const response = new Uint8Array(header.length + chunk.byteLength);
+                    response.set(header, 0);
+                    response.set(chunk, header.length);
+                    webSocket.send(response.buffer); 
+                    header = null; 
+                } else { 
+                    webSocket.send(chunk); 
+                }
+            },
+            abort() {},
+        })
+    ).catch((err) => { 
         closeSocketQuietly(webSocket); 
     });
-
     if (!hasData && retryFunc) {
         await retryFunc();
     }
@@ -620,13 +517,13 @@ async function forwardataudp(udpChunk, webSocket, respHeader) {
                         webSocket.send(response.buffer);
                         vlessHeader = null; 
                     } else { 
-                        webSocket.send(chunk.buffer || chunk); 
+                        webSocket.send(chunk); 
                     }
                 }
             },
         }));
     } catch (error) {
-        // 异常忽略
+        // console.error('UDP forward error:', error);
     }
 }
 
@@ -635,18 +532,18 @@ async function forwardataudp(udpChunk, webSocket, respHeader) {
  * @returns {Response}
  */
 function getHomePage(request) {
-	const url = request.headers.get('Host');
-	const baseUrl = `https://${url}`;
-	const urlObj = new URL(request.url);
-	const providedPassword = urlObj.searchParams.get('password');
-	if (providedPassword) {
-		if (providedPassword === password) {
-			return getMainPageContent(url, baseUrl);
-		} else {
-			return getLoginPage(url, baseUrl, true);
-		}
-	}
-	return getLoginPage(url, baseUrl, false);
+    const url = request.headers.get('Host');
+    const baseUrl = `https://${url}`;
+    const urlObj = new URL(request.url);
+    const providedPassword = urlObj.searchParams.get('password');
+    if (providedPassword) {
+        if (providedPassword === password) {
+            return getMainPageContent(url, baseUrl);
+        } else {
+            return getLoginPage(url, baseUrl, true);
+        }
+    }
+    return getLoginPage(url, baseUrl, false);
 }
 
 /**
@@ -657,27 +554,138 @@ function getHomePage(request) {
  * @returns {Response}
  */
 function getLoginPage(url, baseUrl, showError = false) {
-	const html = `<!DOCTYPE html>
+    const html = `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workers Service - 登录</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #7dd3ca 0%, #a17ec4 100%); height: 100vh; display: flex; align-items: center; justify-content: center; color: #333; overflow: hidden; }
-        .login-container { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 20px; padding: 40px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); max-width: 400px; width: 95%; text-align: center; }
-        .logo { margin-bottom: -20px; background: linear-gradient(135deg, #7dd3ca 0%, #a17ec4 100%) -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .title { font-size: 1.8rem; margin-bottom: 8px; color: #2d3748; }
-        .subtitle { color: #718096; margin-bottom: 30px; font-size: 1rem; }
-        .form-group { margin-bottom: 20px; text-align: left; }
-        .form-input { width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease; background: #fff; }
-        .form-input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
-        .btn-login { width: 100%; padding: 12px 20px; background: linear-gradient(135deg, #12cd9e 0%, #a881d0 100%); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
-        .btn-login:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
-        .error-message { background: #fed7d7; color: #c53030; padding: 12px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #e53e3e; }
-        .footer { margin-top: 20px; color: #718096; font-size: 0.9rem; }
-        @media (max-width: 480px) { .login-container { padding: 30px 20px; margin: 10px; } .logo { font-size: 2.5rem; } .title { font-size: 1.5rem; } }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #7dd3ca 0%, #a17ec4 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 95%;
+            text-align: center;
+        }
+        
+        .logo {
+            margin-bottom: -20px;
+            background: linear-gradient(135deg, #7dd3ca 0%, #a17ec4 100%)
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .title {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #2d3748;
+        }
+        
+        .subtitle {
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #4a5568;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: #fff;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .btn-login {
+            width: 100%;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #12cd9e 0%, #a881d0 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .error-message {
+            background: #fed7d7;
+            color: #c53030;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #e53e3e;
+        }
+        
+        .footer {
+            margin-top: 20px;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .title {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -685,17 +693,29 @@ function getLoginPage(url, baseUrl, showError = false) {
         <div class="logo"><img src="https://img.icons8.com/color/96/cloudflare.png" alt="Logo"></div>
         <h1 class="title">Workers Service</h1>
         <p class="subtitle">请输入密码以访问服务</p>
+        
         ${showError ? '<div class="error-message">密码错误,请重试</div>' : ''}
+        
         <form onsubmit="handleLogin(event)">
             <div class="form-group">
-                <input type="password" id="password" name="password" class="form-input" placeholder="请输入密码" required autofocus>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    class="form-input" 
+                    placeholder="请输入密码"
+                    required
+                    autofocus
+                >
             </div>
             <button type="submit" class="btn-login">登录</button>
         </form>
+        
         <div class="footer">
             <p>Powered by eooce <a href="https://t.me/eooceu" target="_blank" style="color: #007bff; text-decoration: none;">Join Telegram group</a></p>
         </div>
     </div>
+    
     <script>
         function handleLogin(event) {
             event.preventDefault();
@@ -708,13 +728,13 @@ function getLoginPage(url, baseUrl, showError = false) {
 </body>
 </html>`;
 
-	return new Response(html, {
-		status: 200,
-		headers: {
-			'Content-Type': 'text/html;charset=utf-8',
-			'Cache-Control': 'no-cache, no-store, must-revalidate',
-		},
-	});
+    return new Response(html, {
+        status: 200,
+        headers: {
+            'Content-Type': 'text/html;charset=utf-8',
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+        },
+    });
 }
 
 /**
@@ -724,7 +744,7 @@ function getLoginPage(url, baseUrl, showError = false) {
  * @returns {Response}
  */
 function getMainPageContent(url, baseUrl) {
-	const html = `<!DOCTYPE html>
+    const html = `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -732,93 +752,502 @@ function getMainPageContent(url, baseUrl) {
     <title>Workers Service</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #66ead7 0%, #9461c8 100%); height: 100vh; display: flex; align-items: center; justify-content: center; color: #333; overflow: hidden; }
-        .container { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 20px; padding: 20px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); max-width: 800px; width: 95%; max-height: 90vh; text-align: center; overflow-y: auto; display: flex; flex-direction: column; position: relative; }
-        .logout-btn { position: fixed; top: 20px; right: 20px; background: #a7a0d8; color: #dc2929; border: none; border-radius: 8px; padding: 8px 16px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); z-index: 1000; }
-        .logout-btn:hover { background: #e0e0e0; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
-        .logo { margin-bottom: -10px; background: linear-gradient(45deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .title { font-size: 1.8rem; margin-bottom: 8px; color: #2d3748; }
-        .subtitle { color: #718096; margin-bottom: 15px; font-size: 1rem; }
-        .info-card { background: #f7fafc; border-radius: 12px; padding: 15px; margin: 10px 0; border-left: 3px solid #6ed8c9; flex: 1; overflow-y: auto; }
-        .info-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; }
-        .info-item:last-child { border-bottom: none; }
-        .label { font-weight: 600; color: #4a5568; }
-        .value { color:rgb(20, 23, 29); font-family: 'Courier New', monospace; background: #edf2f7; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; }
-        .button-group { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 15px 0; }
-        .btn { padding: 10px 20px; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s ease; min-width: 100px; }
-        .btn-secondary { background: linear-gradient(45deg, #68e3d6, #906cc9); color: #001379; }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
-        .status { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #48bb78; margin-right: 8px; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-        .footer { margin-top: 10px; color: #718096; font-size: 1rem; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-        .footer-links { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; justify-content: center; }
-        .footer-link { color: #667eea; text-decoration: none; display: flex; align-items: center; gap: 6px; font-weight: 500; transition: all 0.3s ease; padding: 4px 8px; border-radius: 6px; }
-        .footer-link:hover { background: rgba(102, 126, 234, 0.1); transform: translateY(-1px); }
-        .toast { position: fixed; top: 20px; right: 20px; background:rgb(244, 252, 247); border-left: 4px solid #48bb78; border-radius: 8px; padding: 12px 16px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); display: flex; align-items: center; gap: 10px; z-index: 1000; opacity: 0; transform: translateX(100%); transition: all 0.3s ease; max-width: 300px; }
-        .toast.show { opacity: 1; transform: translateX(0); }
-        .toast-icon { width: 20px; height: 20px; background: #48bb78; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: bold; }
-        .toast-message { color: #2d3748; font-size: 14px; font-weight: 500; }
-        @media (max-width: 768px) { .container { padding: 15px; margin: 10px; max-height: 95vh; } .logout-btn { top: 15px; right: 15px; padding: 6px 12px; font-size: 0.8rem; } .logo { font-size: 2rem; } .title { font-size: 1.5rem; } .button-group { flex-direction: column; align-items: center; gap: 8px; } .btn { width: 100%; max-width: 180px; padding: 8px 16px; font-size: 0.85rem; } .info-item { flex-direction: column; align-items: flex-start; gap: 4px; } .value { word-break: break-all; font-size: 0.8rem; } .footer-links { flex-direction: column; gap: 10px; } }
-        @media (max-width: 480px) { .container { padding: 10px; margin: 5px; } .info-card { padding: 10px; } .toast { top: 10px; right: 10px; left: 10px; max-width: none; transform: translateY(-100%); } .toast.show { transform: translateY(0); } }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #66ead7 0%, #9461c8 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 95%;
+            max-height: 90vh;
+            text-align: center;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .logout-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #a7a0d8;
+            color: #dc2929;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .logout-btn i {
+            font-size: 0.9rem;
+        }
+        
+        .logout-btn:hover {
+            background: #e0e0e0;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .logo {
+            margin-bottom: -10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .title {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #2d3748;
+        }
+        
+        .subtitle {
+            color: #718096;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        
+        .info-card {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 3px solid #6ed8c9;
+            flex: 1;
+            overflow-y: auto;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .label {
+            font-weight: 600;
+            color: #4a5568;
+        }
+        
+        .value {
+            color:rgb(20, 23, 29);
+            font-family: 'Courier New', monospace;
+            background: #edf2f7;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            min-width: 100px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(45deg, #68e3d6, #906cc9);
+            color: #001379;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .status {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #48bb78;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .footer {
+            margin-top: 10px;
+            color: #718096;
+            font-size: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .footer-link {
+            color: #667eea;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+        
+        .footer-link:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-1px);
+        }
+        
+        .github-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background:rgb(244, 252, 247);
+            border-left: 4px solid #48bb78;
+            border-radius: 8px;
+            padding: 12px 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+            max-width: 300px;
+        }
+        
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .toast-icon {
+            width: 20px;
+            height: 20px;
+            background: #48bb78;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .toast-message {
+            color: #2d3748;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+                max-height: 95vh;
+            }
+            
+            .logout-btn {
+                top: 15px;
+                right: 15px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .title {
+                font-size: 1.5rem;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 180px;
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+            
+            .info-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            
+            .value {
+                word-break: break-all;
+                font-size: 0.8rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+                margin: 5px;
+            }
+            
+            .info-card {
+                padding: 10px;
+            }
+            
+            .toast {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
+                transform: translateY(-100%);
+            }
+            
+            .toast.show {
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
-    <button onclick="logout()" class="logout-btn"><i class="fas fa-sign-out-alt"></i><span>退出登录</span></button>
+    <button onclick="logout()" class="logout-btn">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>退出登录</span>
+    </button>
+    
     <div class="container">
         <div class="logo"><img src="https://img.icons8.com/color/96/cloudflare.png" alt="Logo"></div>
         <h1 class="title">Workers Service</h1>
-        <p class="subtitle">基于 Cloudflare Workers 的高性能 VLESS 网络服务</p>
+        <p class="subtitle">基于 Cloudflare Workers 的高性能网络服务 (VLESS)</p>
+        
         <div class="info-card">
-            <div class="info-item"><span class="label">服务状态</span><span class="value"><span class="status"></span>运行中</span></div>
-            <div class="info-item"><span class="label">主机地址</span><span class="value">${url}</span></div>
-            <div class="info-item"><span class="label">UUID</span><span class="value">${yourUUID}</span></div>
-            <div class="info-item"><span class="label">V2rayN订阅地址</span><span class="value">${baseUrl}/${subPath}</span></div>
-            <div class="info-item"><span class="label">Clash订阅地址</span><span class="value">https://sublink.eooce.com/clash?config=${baseUrl}/${subPath}</span></div>
-            <div class="info-item"><span class="label">singbox订阅地址</span><span class="value">https://sublink.eooce.com/singbox?config=${baseUrl}/${subPath}</span></div>
+            <div class="info-item">
+                <span class="label">服务状态</span>
+                <span class="value"><span class="status"></span>运行中</span>
+            </div>
+            <div class="info-item">
+                <span class="label">主机地址</span>
+                <span class="value">${url}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">UUID</span>
+                <span class="value">${yourUUID}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">V2rayN订阅地址</span>
+                <span class="value">${baseUrl}/${subPath}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Clash订阅地址</span>
+                <span class="value">https://sublink.eooce.com/clash?config=${baseUrl}/${subPath}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">singbox订阅地址</span>
+                <span class="value">https://sublink.eooce.com/singbox?config=${baseUrl}/${subPath}</span>
+            </div>
         </div>
+        
         <div class="button-group">
             <button onclick="copySingboxSubscription()" class="btn btn-secondary">复制singbox订阅链接</button>
             <button onclick="copyClashSubscription()" class="btn btn-secondary">复制Clash订阅链接</button>
             <button onclick="copySubscription()" class="btn btn-secondary">复制V2rayN订阅链接</button>
         </div>
+        
         <div class="footer">
             <div class="footer-links">
-                <a href="https://github.com/eooce/CF-Workers-VLESS" target="_blank" class="footer-link">GitHub 项目地址</a>
-                <a href="https://check-proxyip.ssss.nyc.mn/" target="_blank" class="footer-link">Proxyip 检测服务</a>
-                <a href="https://t.me/eooceu" target="_blank" class="footer-link">Telegram 反馈交流群</a>
+                <a href="https://github.com/eooce/CF-Workers-VLESS" target="_blank" class="footer-link">
+                    <svg class="github-icon" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.479-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span>GitHub 项目地址</span>
+                </a>
+                <a href="https://check-proxyip.ssss.nyc.mn/" target="_blank" class="footer-link">
+                    <span>✅</span>
+                    <span>Proxyip 检测服务</span>
+                </a>
+                <a href="https://t.me/eooceu" target="_blank" class="footer-link">
+                    <span>📱</span>
+                    <span>Telegram 反馈交流群</span>
+                </a>
             </div>
         </div>
     </div>
+    
     <script>
         function showToast(message) {
-            const existingToast = document.querySelector('.toast'); if (existingToast) existingToast.remove();
-            const toast = document.createElement('div'); toast.className = 'toast';
-            const icon = document.createElement('div'); icon.className = 'toast-icon'; icon.textContent = '✓';
-            const messageDiv = document.createElement('div'); messageDiv.className = 'toast-message'; messageDiv.textContent = message;
-            toast.appendChild(icon); toast.appendChild(messageDiv); document.body.appendChild(toast);
-            setTimeout(() => toast.classList.add('show'), 10);
-            setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 300); }, 1500);
+            const existingToast = document.querySelector('.toast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            
+            const icon = document.createElement('div');
+            icon.className = 'toast-icon';
+            icon.textContent = '✓';
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'toast-message';
+            messageDiv.textContent = message;
+            
+            toast.appendChild(icon);
+            toast.appendChild(messageDiv);
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }, 1500);
         }
+        
         function copySubscription() {
-            const configUrl = '${baseUrl}/${subPath}'; navigator.clipboard.writeText(configUrl).then(() => showToast('V2rayN订阅链接已复制!'));
+            const configUrl = '${baseUrl}/${subPath}';
+            navigator.clipboard.writeText(configUrl).then(() => {
+                showToast('V2rayN订阅链接已复制到剪贴板!');
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = configUrl;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast('V2rayN订阅链接已复制到剪贴板!');
+            });
         }
+        
         function copyClashSubscription() {
-            const clashUrl = 'https://sublink.eooce.com/clash?config=${baseUrl}/${subPath}'; navigator.clipboard.writeText(clashUrl).then(() => showToast('Clash订阅链接已复制!'));
+            const clashUrl = 'https://sublink.eooce.com/clash?config=${baseUrl}/${subPath}';
+            navigator.clipboard.writeText(clashUrl).then(() => {
+                showToast('Clash订阅链接已复制到剪贴板!');
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = clashUrl;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast('Clash订阅链接已复制到剪贴板!');
+            });
         }
+        
         function copySingboxSubscription() {
-            const singboxUrl = 'https://sublink.eooce.com/singbox?config=${baseUrl}/${subPath}'; navigator.clipboard.writeText(singboxUrl).then(() => showToast('singbox订阅链接已复制!'));
+            const singboxUrl = 'https://sublink.eooce.com/singbox?config=${baseUrl}/${subPath}';
+            navigator.clipboard.writeText(singboxUrl).then(() => {
+                showToast('singbox订阅链接已复制到剪贴板!');
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = singboxUrl;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast('singbox订阅链接已复制到剪贴板!');
+            });
         }
-        function logout() { if (confirm('确定要退出登录吗?')) { const currentUrl = new URL(window.location); currentUrl.searchParams.delete('password'); window.location.href = currentUrl.toString(); } }
+        
+        function logout() {
+            if (confirm('确定要退出登录吗?')) {
+                const currentUrl = new URL(window.location);
+                currentUrl.searchParams.delete('password');
+                window.location.href = currentUrl.toString();
+            }
+        }
     </script>
 </body>
 </html>`;
 
-	return new Response(html, {
-		status: 200,
-		headers: {
-			'Content-Type': 'text/html;charset=utf-8',
-			'Cache-Control': 'no-cache, no-store, must-revalidate',
-		},
-	});
+    return new Response(html, {
+        status: 200,
+        headers: {
+            'Content-Type': 'text/html;charset=utf-8',
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+        },
+    });
 }
