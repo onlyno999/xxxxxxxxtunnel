@@ -822,5 +822,3 @@ function getMainPageContent(url, baseUrl) {
 		},
 	});
 }
-
-```
