@@ -13,26 +13,11 @@ let proxyIP = 'proxyip.zone.id'; // 确保这里有默认值或者通过环境�
 let proxyPort = 443; // 默认端口为 443
 
 // --- 新增：伪装页面相关的变量和函数 ---
-let disguiseUrl = 'https://cf-worker-dir-bke.pages.dev/'; // 添加伪装页面的URL
-
 async function serveDisguisePage() {
-  try {
-    const res = await fetch(disguiseUrl, { cf: { cacheEverything: true } });
-    return new Response(res.body, res);
-  } catch {
-    return new Response(
-      `<!DOCTYPE html>
-       <html>
-         <head><title>Welcome</title></head>
-         <body><h1>Cloudflare Worker 已部署成功</h1>
-         <p>此页面为静态伪装页面（远程加载失败）。</p></body>
-       </html>`,
-      {
-        status: 200,
-        headers: { 'Content-Type': 'text/html; charset=utf-8' }
-      }
-    );
-  }
+  return new Response('Hello World!', {
+    status: 200,
+    headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+  });
 }
 
 if (!isValidUUID(userID)) {
@@ -702,7 +687,7 @@ async function handleDNSQuery(udpChunk, webSocket, dynamicProtocolResponseHeader
 		writer.releaseLock();
 		await tcpSocket.readable.pipeTo(new WritableStream({
 			async write(chunk) {
-				if (webSocket.readyState === WS_READY_STATE_OPEN) {
+				if (webSocket.readyState !== WS_READY_STATE_OPEN) {
 					if (dynamicProtocolHeader) {
 						webSocket.send(await new Blob([dynamicProtocolHeader, chunk]).arrayBuffer());
 						dynamicProtocolHeader = null;
