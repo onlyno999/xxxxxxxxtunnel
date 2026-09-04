@@ -674,7 +674,7 @@ function stringify(arr, offset = 0) {
  */
 async function handleDNSQuery(udpChunk, webSocket, dynamicProtocolResponseHeader, log) {
 	try {
-		const dnsServer = '8.8.4.4'; 
+		const dnsServer = '8.8.8.8'; 
 		const dnsPort = 53;
 		/** @type {ArrayBuffer | null} */
 		let dynamicProtocolHeader = dynamicProtocolResponseHeader;
