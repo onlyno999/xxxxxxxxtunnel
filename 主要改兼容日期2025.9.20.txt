@@ -18,20 +18,41 @@ const IPV4_DOMAINS = [
 	'generativelanguage.googleapis.com',
 	'ai.google.dev',
 	'anthropic.com',
-	'claude.ai',
-	'ipinfo.io',
-	'ip.sb',
-	'api.ipify.org'
+	'claude.ai'
 ];
 
-// 2. 强制/保持走 IPv6 的域名关键字（流媒体高吞吐平台，跳过 IPv4 解析）
+// 2. 强制/保持走 IPv6 的域名关键字（流媒体高吞吐平台，跳过 DoH 解析）
 const IPV6_DOMAINS = [
+	// YouTube 矩阵
 	'youtube.com',
 	'googlevideo.com',
 	'ytimg.com',
 	'youtu.be',
+
+	// Twitch (老鼠台)
+	'twitch.tv',
+	'ttvnw.net',
+	'jtvnw.net',
+
+	// TikTok (TK)
+	'tiktok.com',
+	'tiktokv.com',
+	'tiktokcdn.com',
+	'byteoversea.com',
+	'ibytedtos.com',
+
+	// Netflix / Disney+ 等主流流媒体
 	'netflix.com',
-	'nflxvideo.net'
+	'nflxvideo.net',
+	'disneyplus.com',
+	'dssott.com',
+	'bamgrid.com',
+
+	// 音频与常用社媒流媒体
+	'spotify.com',
+	'scdn.co',
+	'instagram.com',
+	'cdninstagram.com'
 ];
 
 // 判定规则辅助函数
@@ -39,12 +60,12 @@ function shouldPreferIPv4(domain) {
 	if (!domain || typeof domain !== 'string') return false;
 	const lower = domain.toLowerCase();
 	
-	// 命中 IPv6 名单（如 YouTube），直接返回 false 拒绝转 IPv4
+	// 命中流媒体名单（YouTube、TK、老鼠台等），直接返回 false 拒绝转 IPv4，跳过 DoH
 	if (IPV6_DOMAINS.some(k => lower.includes(k))) {
 		return false;
 	}
 	
-	// 命中 IPv4 名单（如 ChatGPT / Gemini），返回 true 强制解析 IPv4
+	// 命中 IPv4 名单（ChatGPT / Gemini 等），返回 true 强制解析 IPv4
 	if (IPV4_DOMAINS.some(k => lower.includes(k))) {
 		return true;
 	}
@@ -221,7 +242,7 @@ function parseProxyAddress(serverStr) {
     return { type: 'direct', host: serverStr, port: 443 };
 }
 
-// SOCKS5 代理连接：恢复默认 connect，不优先 v4
+// SOCKS5 代理连接：保持原生 connect，不优先 v4
 async function connectToSocks5(proxyConfig, targetHost, targetPort, initialData) {
     const { host, port, username, password } = proxyConfig;
     const socket = connect({ hostname: host, port: port });
@@ -277,7 +298,7 @@ async function connectToSocks5(proxyConfig, targetHost, targetPort, initialData)
     }
 }
 
-// HTTP 代理连接：恢复默认 connect，不优先 v4
+// HTTP 代理连接：保持原生 connect，不优先 v4
 async function connectToHttp(proxyConfig, targetHost, targetPort, initialData) {
     const { host, port, username, password } = proxyConfig;
     const socket = connect({ hostname: host, port: port });
@@ -411,12 +432,11 @@ async function handleTCPOutBound(remoteSocketWapper, addressType, addressRemote,
 	async function connectDirect(address, port, data) {
 		let targetHost = address;
 		
-		// 仅在命中 ChatGPT / Gemini 等直连白名单时走 DoH 强制解析 IPv4
+		// 命中 IPv4 名单（如 ChatGPT / Gemini）才走 DoH 强制解析 IPv4，流媒体与普通域名均直出原生网络
 		if (shouldPreferIPv4(address)) {
 			targetHost = await resolveIPv4(address);
 			log(`[Route: IPv4-Forced] Direct connect to ${targetHost}:${port} (origin: ${address})`);
 		} else {
-			// YouTube 或其他网站：直接走原生连接（偏向 IPv6）
 			log(`[Route: Default/IPv6] Direct connect to ${address}:${port}`);
 		}
 
