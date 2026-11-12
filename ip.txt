@@ -1,160 +1,160 @@
-store.ubi.com:443#地区 — Cloudflare CDN 节点 | 育碧商城
-serviceshub.samsclub.com:443#地区 — Cloudflare CDN 节点 | 山姆会员
-www.allianz.com:443#地区 — Cloudflare CDN 节点 | 安联集团
-www.decathlon.com:443#地区 — Cloudflare CDN 节点 | 迪卡侬
-www.asda.com:443#地区 — Cloudflare CDN 节点 | 阿斯达
-www.shopify.com:443#地区 — Cloudflare CDN 节点 | Shopify
-cookiebot.com:443#地区 — Cloudflare CDN 节点 | Cookiebot
-bluehost.com:443#地区 — Cloudflare CDN 节点 | BlueHost
-nexusmods.com:443#地区 — Cloudflare CDN 节点 | NexusMods
-glassdoor.com:443#地区 — Cloudflare CDN 节点 | Glassdoor
-www.jimdo.com:443#地区 — Cloudflare CDN 节点 | Jimdo
-openai.com:443#地区 — Cloudflare CDN 节点 | OpenAI
-www.sage.com:443#地区 — Cloudflare CDN 节点 | Sage
-www.speedtest.net:443#地区 — Cloudflare CDN 节点 | Ookla
-investor.apple.com:443#地区 — Cloudflare CDN 节点 | Apple
-markmonitor.com:443#地区 — Cloudflare CDN 节点 | MarkMonitor
-store.epicgames.com:443#地区 — Cloudflare CDN 节点 | Epicgames
-mycareer.verizon.com:443#地区 — Cloudflare CDN 节点 | Verizon
-onetrust.com:443#地区 — Cloudflare CDN 节点 | OneTrust
-www.affirm.com:443#地区 — Cloudflare CDN 节点 | Affirm
-www.zendesk.com:443#地区 — Cloudflare CDN 节点 | Zendesk
-www.doordash.com:443#地区 — Cloudflare CDN 节点 | DoorDash
-digitalocean.com:443#地区 — Cloudflare CDN 节点 | DigitalOcean
-ringcentral.com:443#地区 — Cloudflare CDN 节点 | RingCentral
-chrono24.com:443#地区 — Cloudflare CDN 节点 | Chrono24
-www.wto.org:443#地区 — Cloudflare CDN 节点 | WTO
-www.mskcc.org:443#地区 — Cloudflare CDN 节点 | MSKCC
-cdn.jsdelivr.net:443#地区 — Cloudflare CDN 节点 | jsDelivr
-www.broadcom.com:443#地区 — Cloudflare CDN 节点 | 博通
-www.nestle.com:443#地区 — Cloudflare CDN 节点 | 雀巢
-homecare.stryker.com:443#地区 — Cloudflare CDN 节点 | 史赛克
-www.emerson.com:443#地区 — Cloudflare CDN 节点 | 艾默生
-visit.honeywell.com:443#地区 — Cloudflare CDN 节点 | 霍尼韦尔
-polestar.com:443#地区 — Cloudflare CDN 节点 | 极星汽车
-auctions.ihg.com.cn:443#地区 — Cloudflare CDN 节点 | 洲际酒店
-woodsbagot.com:443#地区 — Cloudflare CDN 节点 | 伍兹贝格
-www.transunion.hk:443#地区 — Cloudflare CDN 节点 | 香江环联
-www.hongkongairport.com:443#地区 — Cloudflare CDN 节点 | 香江机场
-deepin.org:443#地区 — Cloudflare CDN 节点 | 深度系统
-www.police.uk:443#地区 — Cloudflare CDN 节点 | 英国警务
-www.leics.police.uk:443#地区 — Cloudflare CDN 节点 | 莱斯特郡
-china.mfa.gov.ua:443#地区 — Cloudflare CDN 节点 | 乌克兰驻华
-www.visa.cn:443#地区 — Cloudflare CDN 节点 | VISA中国
-visa.com:443#地区 — Cloudflare CDN 节点 | VISA美国
-www.tpg.com:443#地区 — Cloudflare CDN 节点 | TPG
-www.wilshire.com:443#地区 — Cloudflare CDN 节点 | Wilshire
-engage.cloudflareclient.com:443#地区 — Cloudflare CDN 节点 | WARP
-cloudflare-eth.com:443#地区 — Cloudflare CDN 节点 | Web3
-cloudflare.dev:443#地区 — Cloudflare CDN 节点 | Developers
-cloudflare.net:443#地区 — Cloudflare CDN 节点 | Business
-r2.dev:443#地区 — Cloudflare CDN 节点 | R2
-pages.dev:443#地区 — Cloudflare CDN 节点 | Pages
-cdnjs.com:443#地区 — Cloudflare CDN 节点 | CDNJS
-cloudflare-ech.com:443#地区 — Cloudflare CDN 节点 | ECH
-static.cloudflareinsights.com:443#地区 — Cloudflare CDN 节点 | Analytics
-ln.edu.hk:443#地区 — Cloudflare CDN 节点 | 岭南大学
-www.ntu.edu.sg:443#地区 — Cloudflare CDN 节点 | 南洋理工
-www.ox.ac.uk:443#地区 — Cloudflare CDN 节点 | 牛津大学
-columbia.edu:443#地区 — Cloudflare CDN 节点 | 哥伦比亚
-www.udacity.com:443#地区 — Cloudflare CDN 节点 | Udacity
-for.edu.sg:443#地区 — Cloudflare CDN 节点 | ForEduSG
-www.researchgate.net:443#地区 — Cloudflare CDN 节点 | ResearchGate
-saas.sin.fan:443#地区 — Cloudflare CDN 节点 | MIYU
-cloudflare.182682.xyz:443#地区 — Cloudflare CDN 节点 | WeTest
-skk.moe:443#地区 — Cloudflare CDN 节点 | Sukka
-bestcf.030101.xyz:443#地区 — Cloudflare CDN 节点 | MingYu
-cf.877774.xyz:443#地区 — Cloudflare CDN 节点 | QMS
-yg1.ygkkk.dpdns.org:443#地区 — Cloudflare CDN 节点 | YGKKK
-cf.090227.xyz:443#地区 — Cloudflare CDN 节点 | CMLiu
-cf.3666888.xyz:443#地区 — Cloudflare CDN 节点 | HuTao
-cf.tencentapp.cn:443#地区 — Cloudflare CDN 节点 | KTFF
-ct.877774.xyz:443#地区 — Cloudflare CDN 节点 | 电信QMS
-ct.cloudflare.byoip.top:443#地区 — Cloudflare CDN 节点 | 电信Byoip
-cu.877774.xyz:443#地区 — Cloudflare CDN 节点 | 联通QMS
-cu.cloudflare.byoip.top:443#地区 — Cloudflare CDN 节点 | 联通Byoip
-cmcc.877774.xyz:443#地区 — Cloudflare CDN 节点 | 移动QMS
-cm.cloudflare.byoip.top:443#地区 — Cloudflare CDN 节点 | 移动Byoip
-polestar.com:443#地区 — Cloudflare CDN 节点 | 中国极星汽车
-deepin.org:443#地区 — Cloudflare CDN 节点 | 中国深度系统
-ubuntu.com.cn:443#地区 — Cloudflare CDN 节点 | 中国乌班图
-www.nestle.com.cn:443#地区 — Cloudflare CDN 节点 | 中国雀巢
-ir.yuntongxun.com:443#地区 — Cloudflare CDN 节点 | 中国容联
-70mai.store:443#地区 — Cloudflare CDN 节点 | 中国70迈
-fossilchina.cn:443#地区 — Cloudflare CDN 节点 | 中国Fossil
-52pojie.org:443#地区 — Cloudflare CDN 节点 | 吾爱破解
-jebsen.com:443#地区 — Cloudflare CDN 节点 | 中国香港捷成
-www.transunion.hk:443#地区 — Cloudflare CDN 节点 | 中国香港环联
-tomleemusic.com.hk:443#地区 — Cloudflare CDN 节点 | 中国香港通利
-www.hthkh.com:443#地区 — Cloudflare CDN 节点 | 中国香港和记电讯
-www.caritas.org.hk:443#地区 — Cloudflare CDN 节点 | 中国香港明爱
-www.aeon.com.hk:443#地区 — Cloudflare CDN 节点 | 中国香港永旺
-www.aeon.info:443#地区 — Cloudflare CDN 节点 | 中国香港永旺
-news.cathaypacific.com:443#地区 — Cloudflare CDN 节点 | 香港国泰航空
-hongkongairport.com:443#地区 — Cloudflare CDN 节点 | 香港机场
-foodpanda.hk:443#地区 — Cloudflare CDN 节点 | 香港富胖达
-sasa.com:443#地区 — Cloudflare CDN 节点 | 中国香港莎莎
-www.stheadline.com:443#地区 — Cloudflare CDN 节点 | 香港星岛头条
-www.mplus.org.hk:443#地区 — Cloudflare CDN 节点 | 香港M+博物馆
-citysuper.com.hk:443#地区 — Cloudflare CDN 节点 | 中国香港CitySuper
-yesstyle.com:443#地区 — Cloudflare CDN 节点 | 中国香港YesStyle
-jobsdb.com:443#地区 — Cloudflare CDN 节点 | 中国香港JobsDB
-www.yata.hk:443#地区 — Cloudflare CDN 节点 | 中国香港一田百货
-pfizer.com.hk:443#地区 — Cloudflare CDN 节点 | 中国香港辉瑞
-cyberport.com.hk:443#地区 — Cloudflare CDN 节点 | 中国香港数码港
-advantech.com:443#地区 — Cloudflare CDN 节点 | 中国台湾研华
-leyun.cloud:443#地区 — Cloudflare CDN 节点 | 中国台湾乐云
-newsmarket.com.tw:443#地区 — Cloudflare CDN 节点 | 中国台湾上下游
-www.buy123.com.tw:443#地区 — Cloudflare CDN 节点 | 中国台湾帮客
-www.pcone.com.tw:443#地区 — Cloudflare CDN 节点 | 中国台湾披西玩
-104.com.tw:443#地区 — Cloudflare CDN 节点 | 中国台湾一零四
-lac.com.tw:443#地区 — Cloudflare CDN 节点 | 中国台湾LAC
-shopback.com.tw:443#地区 — Cloudflare CDN 节点 | 中国台湾返利
-www.airasia.com:443#地区 — Cloudflare CDN 节点 | 大马亚航
-www.allianz.com.my:443#地区 — Cloudflare CDN 节点 | 大马安联
-www.dbs.com:443#地区 — Cloudflare CDN 节点 | 新加坡星展
-www.razer.com:443#地区 — Cloudflare CDN 节点 | 新加坡雷蛇
-ralphlauren.com.sg:443#地区 — Cloudflare CDN 节点 | 新加坡拉夫劳伦
-shoppes.marinabaysands.com:443#地区 — Cloudflare CDN 节点 | 新加坡金沙
-store.sony.com.sg:443#地区 — Cloudflare CDN 节点 | 新加坡索尼
-camperandnicholsons.com:443#地区 — Cloudflare CDN 节点 | 新加坡游艇
-drivewealth.com:443#地区 — Cloudflare CDN 节点 | 新加坡金融
-www.ooredoo.qa:443#地区 — Cloudflare CDN 节点 | 卡塔尔电信
-qnb.com:443#地区 — Cloudflare CDN 节点 | 卡塔尔国家银行
-www.lacoste.qa:443#地区 — Cloudflare CDN 节点 | 卡塔尔鳄鱼
-www.nike.qa:443#地区 — Cloudflare CDN 节点 | 卡塔尔耐克
-starbucks.qa:443#地区 — Cloudflare CDN 节点 | 卡塔尔星巴克
-decathlon.qa:443#地区 — Cloudflare CDN 节点 | 卡塔尔迪卡侬
-crocs.com.vn:443#地区 — Cloudflare CDN 节点 | 越南卡骆驰
-locknlock.vn:443#地区 — Cloudflare CDN 节点 | 越南乐扣乐扣
-guardian.com.vn:443#地区 — Cloudflare CDN 节点 | 越南Guardian
-vinhomes.vn:443#地区 — Cloudflare CDN 节点 | 越南地产龙头
-batdongsan.com.vn:443#地区 — Cloudflare CDN 节点 | 越南房产网
-chotot.com:443#地区 — Cloudflare CDN 节点 | 越南电商
-www.vexere.com:443#地区 — Cloudflare CDN 节点 | 越南巴士
-www.allianz.co.th:443#地区 — Cloudflare CDN 节点 | 泰国安联
-www.bitkub.com:443#地区 — Cloudflare CDN 节点 | 泰国加密货币
-www.kingpower.com:443#地区 — Cloudflare CDN 节点 | 泰国皇权免税
-www.bumrungrad.com:443#地区 — Cloudflare CDN 节点 | 泰国康民
-www.nokair.com:443#地区 — Cloudflare CDN 节点 | 泰国皇雀航空
-www.minorhotels.com:443#地区 — Cloudflare CDN 节点 | 泰国美诺酒店
-www.toysrus.co.th:443#地区 — Cloudflare CDN 节点 | 泰国玩具反斗城
-www.bathandbodyworks.co.th:443#地区 — Cloudflare CDN 节点 | 泰国BBW
-www.victoriassecretbeauty.co.th:443#地区 — Cloudflare CDN 节点 | 泰国维密
-www.allianz.co.id:443#地区 — Cloudflare CDN 节点 | 印尼安联
-www.kohler.co.id:443#地区 — Cloudflare CDN 节点 | 印尼科勒
-allot.com:443#地区 — Cloudflare CDN 节点 | 以色列Allot
-www.mizuno.com:443#地区 — Cloudflare CDN 节点 | 日本美津浓
-converse.co.jp:443#地区 — Cloudflare CDN 节点 | 日本匡威
-edion.co.jp:443#地区 — Cloudflare CDN 节点 | 日本爱电王
-diesel.co.jp:443#地区 — Cloudflare CDN 节点 | 日本迪赛
-shop.glico.com:443#地区 — Cloudflare CDN 节点 | 日本格力高
-ten.com:443#地区 — Cloudflare CDN 节点 | 日本营销科技
-www.mlb-korea.com:443#地区 — Cloudflare CDN 节点 | 韩国MLB
-uplus.co.kr:443#地区 — Cloudflare CDN 节点 | 韩国LG电信
-www.hyundai.com:443#地区 — Cloudflare CDN 节点 | 韩国现代
-www.kia.com:443#地区 — Cloudflare CDN 节点 | 韩国起亚
-www.samsungbiologics.com:443#地区 — Cloudflare CDN 节点 | 韩国三星生物
-www.mlb-korea.com:443#地区 — Cloudflare CDN 节点 | 韩国棒球联盟
-www.airpremia.com:443#地区 — Cloudflare CDN 节点 | 韩国航空会社
-doosan.com:443#地区 — Cloudflare CDN 节点 | 韩国斗山
+store.ubi.com:443# ↔ 测试地区 — Cloudflare CDN
+serviceshub.samsclub.com:443# ↔ 测试地区 — Cloudflare CDN
+www.allianz.com:443# ↔ 测试地区 — Cloudflare CDN
+www.decathlon.com:443# ↔ 测试地区 — Cloudflare CDN
+www.asda.com:443# ↔ 测试地区 — Cloudflare CDN
+www.shopify.com:443# ↔ 测试地区 — Cloudflare CDN
+cookiebot.com:443# ↔ 测试地区 — Cloudflare CDN
+bluehost.com:443# ↔ 测试地区 — Cloudflare CDN
+nexusmods.com:443# ↔ 测试地区 — Cloudflare CDN
+glassdoor.com:443# ↔ 测试地区 — Cloudflare CDN
+www.jimdo.com:443# ↔ 测试地区 — Cloudflare CDN
+openai.com:443# ↔ 测试地区 — Cloudflare CDN
+www.sage.com:443# ↔ 测试地区 — Cloudflare CDN
+www.speedtest.net:443# ↔ 测试地区 — Cloudflare CDN
+investor.apple.com:443# ↔ 测试地区 — Cloudflare CDN
+markmonitor.com:443# ↔ 测试地区 — Cloudflare CDN
+store.epicgames.com:443# ↔ 测试地区 — Cloudflare CDN
+mycareer.verizon.com:443# ↔ 测试地区 — Cloudflare CDN
+onetrust.com:443# ↔ 测试地区 — Cloudflare CDN
+www.affirm.com:443# ↔ 测试地区 — Cloudflare CDN
+www.zendesk.com:443# ↔ 测试地区 — Cloudflare CDN
+www.doordash.com:443# ↔ 测试地区 — Cloudflare CDN
+digitalocean.com:443# ↔ 测试地区 — Cloudflare CDN
+ringcentral.com:443# ↔ 测试地区 — Cloudflare CDN
+chrono24.com:443# ↔ 测试地区 — Cloudflare CDN
+www.wto.org:443# ↔ 测试地区 — Cloudflare CDN
+www.mskcc.org:443# ↔ 测试地区 — Cloudflare CDN
+cdn.jsdelivr.net:443# ↔ 测试地区 — Cloudflare CDN
+www.broadcom.com:443# ↔ 测试地区 — Cloudflare CDN
+www.nestle.com:443# ↔ 测试地区 — Cloudflare CDN
+homecare.stryker.com:443# ↔ 测试地区 — Cloudflare CDN
+www.emerson.com:443# ↔ 测试地区 — Cloudflare CDN
+visit.honeywell.com:443# ↔ 测试地区 — Cloudflare CDN
+polestar.com:443# ↔ 测试地区 — Cloudflare CDN
+auctions.ihg.com.cn:443# ↔ 测试地区 — Cloudflare CDN
+woodsbagot.com:443# ↔ 测试地区 — Cloudflare CDN
+www.transunion.hk:443# ↔ 测试地区 — Cloudflare CDN
+www.hongkongairport.com:443# ↔ 测试地区 — Cloudflare CDN
+deepin.org:443# ↔ 测试地区 — Cloudflare CDN
+www.police.uk:443# ↔ 测试地区 — Cloudflare CDN
+www.leics.police.uk:443# ↔ 测试地区 — Cloudflare CDN
+china.mfa.gov.ua:443# ↔ 测试地区 — Cloudflare CDN
+www.visa.cn:443# ↔ 测试地区 — Cloudflare CDN
+visa.com:443# ↔ 测试地区 — Cloudflare CDN
+www.tpg.com:443# ↔ 测试地区 — Cloudflare CDN
+www.wilshire.com:443# ↔ 测试地区 — Cloudflare CDN
+engage.cloudflareclient.com:443# ↔ 测试地区 — Cloudflare CDN
+cloudflare-eth.com:443# ↔ 测试地区 — Cloudflare CDN
+cloudflare.dev:443# ↔ 测试地区 — Cloudflare CDN
+cloudflare.net:443# ↔ 测试地区 — Cloudflare CDN
+r2.dev:443# ↔ 测试地区 — Cloudflare CDN
+pages.dev:443# ↔ 测试地区 — Cloudflare CDN
+cdnjs.com:443# ↔ 测试地区 — Cloudflare CDN
+cloudflare-ech.com:443# ↔ 测试地区 — Cloudflare CDN
+static.cloudflareinsights.com:443# ↔ 测试地区 — Cloudflare CDN
+ln.edu.hk:443# ↔ 测试地区 — Cloudflare CDN
+www.ntu.edu.sg:443# ↔ 测试地区 — Cloudflare CDN
+www.ox.ac.uk:443# ↔ 测试地区 — Cloudflare CDN
+columbia.edu:443# ↔ 测试地区 — Cloudflare CDN
+www.udacity.com:443# ↔ 测试地区 — Cloudflare CDN
+for.edu.sg:443# ↔ 测试地区 — Cloudflare CDN
+www.researchgate.net:443# ↔ 测试地区 — Cloudflare CDN
+saas.sin.fan:443# ↔ 测试地区 — Cloudflare CDN
+cloudflare.182682.xyz:443# ↔ 测试地区 — Cloudflare CDN
+skk.moe:443# ↔ 测试地区 — Cloudflare CDN
+bestcf.030101.xyz:443# ↔ 测试地区 — Cloudflare CDN
+cf.877774.xyz:443# ↔ 测试地区 — Cloudflare CDN
+yg1.ygkkk.dpdns.org:443# ↔ 测试地区 — Cloudflare CDN
+cf.090227.xyz:443# ↔ 测试地区 — Cloudflare CDN
+cf.3666888.xyz:443# ↔ 测试地区 — Cloudflare CDN
+cf.tencentapp.cn:443# ↔ 测试地区 — Cloudflare CDN
+ct.877774.xyz:443# ↔ 测试地区 — Cloudflare CDN
+ct.cloudflare.byoip.top:443# ↔ 测试地区 — Cloudflare CDN
+cu.877774.xyz:443# ↔ 测试地区 — Cloudflare CDN
+cu.cloudflare.byoip.top:443# ↔ 测试地区 — Cloudflare CDN
+cmcc.877774.xyz:443# ↔ 测试地区 — Cloudflare CDN
+cm.cloudflare.byoip.top:443# ↔ 测试地区 — Cloudflare CDN
+polestar.com:443# ↔ 测试地区 — Cloudflare CDN
+deepin.org:443# ↔ 测试地区 — Cloudflare CDN
+ubuntu.com.cn:443# ↔ 测试地区 — Cloudflare CDN
+www.nestle.com.cn:443# ↔ 测试地区 — Cloudflare CDN
+ir.yuntongxun.com:443# ↔ 测试地区 — Cloudflare CDN
+70mai.store:443# ↔ 测试地区 — Cloudflare CDN
+fossilchina.cn:443# ↔ 测试地区 — Cloudflare CDN
+52pojie.org:443# ↔ 测试地区 — Cloudflare CDN
+jebsen.com:443# ↔ 测试地区 — Cloudflare CDN
+www.transunion.hk:443# ↔ 测试地区 — Cloudflare CDN
+tomleemusic.com.hk:443# ↔ 测试地区 — Cloudflare CDN
+www.hthkh.com:443# ↔ 测试地区 — Cloudflare CDN
+www.caritas.org.hk:443# ↔ 测试地区 — Cloudflare CDN
+www.aeon.com.hk:443# ↔ 测试地区 — Cloudflare CDN
+www.aeon.info:443# ↔ 测试地区 — Cloudflare CDN
+news.cathaypacific.com:443# ↔ 测试地区 — Cloudflare CDN
+hongkongairport.com:443# ↔ 测试地区 — Cloudflare CDN
+foodpanda.hk:443# ↔ 测试地区 — Cloudflare CDN
+sasa.com:443# ↔ 测试地区 — Cloudflare CDN
+www.stheadline.com:443# ↔ 测试地区 — Cloudflare CDN
+www.mplus.org.hk:443# ↔ 测试地区 — Cloudflare CDN
+citysuper.com.hk:443# ↔ 测试地区 — Cloudflare CDN
+yesstyle.com:443# ↔ 测试地区 — Cloudflare CDN
+jobsdb.com:443# ↔ 测试地区 — Cloudflare CDN
+www.yata.hk:443# ↔ 测试地区 — Cloudflare CDN
+pfizer.com.hk:443# ↔ 测试地区 — Cloudflare CDN
+cyberport.com.hk:443# ↔ 测试地区 — Cloudflare CDN
+advantech.com:443# ↔ 测试地区 — Cloudflare CDN
+leyun.cloud:443# ↔ 测试地区 — Cloudflare CDN
+newsmarket.com.tw:443# ↔ 测试地区 — Cloudflare CDN
+www.buy123.com.tw:443# ↔ 测试地区 — Cloudflare CDN
+www.pcone.com.tw:443# ↔ 测试地区 — Cloudflare CDN
+104.com.tw:443# ↔ 测试地区 — Cloudflare CDN
+lac.com.tw:443# ↔ 测试地区 — Cloudflare CDN
+shopback.com.tw:443# ↔ 测试地区 — Cloudflare CDN
+www.airasia.com:443# ↔ 测试地区 — Cloudflare CDN
+www.allianz.com.my:443# ↔ 测试地区 — Cloudflare CDN
+www.dbs.com:443# ↔ 测试地区 — Cloudflare CDN
+www.razer.com:443# ↔ 测试地区 — Cloudflare CDN
+ralphlauren.com.sg:443# ↔ 测试地区 — Cloudflare CDN
+shoppes.marinabaysands.com:443# ↔ 测试地区 — Cloudflare CDN
+store.sony.com.sg:443# ↔ 测试地区 — Cloudflare CDN
+camperandnicholsons.com:443# ↔ 测试地区 — Cloudflare CDN
+drivewealth.com:443# ↔ 测试地区 — Cloudflare CDN
+www.ooredoo.qa:443# ↔ 测试地区 — Cloudflare CDN
+qnb.com:443# ↔ 测试地区 — Cloudflare CDN
+www.lacoste.qa:443# ↔ 测试地区 — Cloudflare CDN
+www.nike.qa:443# ↔ 测试地区 — Cloudflare CDN
+starbucks.qa:443# ↔ 测试地区 — Cloudflare CDN
+decathlon.qa:443# ↔ 测试地区 — Cloudflare CDN
+crocs.com.vn:443# ↔ 测试地区 — Cloudflare CDN
+locknlock.vn:443# ↔ 测试地区 — Cloudflare CDN
+guardian.com.vn:443# ↔ 测试地区 — Cloudflare CDN
+vinhomes.vn:443# ↔ 测试地区 — Cloudflare CDN
+batdongsan.com.vn:443# ↔ 测试地区 — Cloudflare CDN
+chotot.com:443# ↔ 测试地区 — Cloudflare CDN
+www.vexere.com:443# ↔ 测试地区 — Cloudflare CDN
+www.allianz.co.th:443# ↔ 测试地区 — Cloudflare CDN
+www.bitkub.com:443# ↔ 测试地区 — Cloudflare CDN
+www.kingpower.com:443# ↔ 测试地区 — Cloudflare CDN
+www.bumrungrad.com:443# ↔ 测试地区 — Cloudflare CDN
+www.nokair.com:443# ↔ 测试地区 — Cloudflare CDN
+www.minorhotels.com:443# ↔ 测试地区 — Cloudflare CDN
+www.toysrus.co.th:443# ↔ 测试地区 — Cloudflare CDN
+www.bathandbodyworks.co.th:443# ↔ 测试地区 — Cloudflare CDN
+www.victoriassecretbeauty.co.th:443# ↔ 测试地区 — Cloudflare CDN
+www.allianz.co.id:443# ↔ 测试地区 — Cloudflare CDN
+www.kohler.co.id:443# ↔ 测试地区 — Cloudflare CDN
+allot.com:443# ↔ 测试地区 — Cloudflare CDN
+www.mizuno.com:443# ↔ 测试地区 — Cloudflare CDN
+converse.co.jp:443# ↔ 测试地区 — Cloudflare CDN
+edion.co.jp:443# ↔ 测试地区 — Cloudflare CDN
+diesel.co.jp:443# ↔ 测试地区 — Cloudflare CDN
+shop.glico.com:443# ↔ 测试地区 — Cloudflare CDN
+ten.com:443# ↔ 测试地区 — Cloudflare CDN
+www.mlb-korea.com:443# ↔ 测试地区 — Cloudflare CDN
+uplus.co.kr:443# ↔ 测试地区 — Cloudflare CDN
+www.hyundai.com:443# ↔ 测试地区 — Cloudflare CDN
+www.kia.com:443# ↔ 测试地区 — Cloudflare CDN
+www.samsungbiologics.com:443# ↔ 测试地区 — Cloudflare CDN
+www.mlb-korea.com:443# ↔ 测试地区 — Cloudflare CDN
+www.airpremia.com:443# ↔ 测试地区 — Cloudflare CDN
+doosan.com:443# ↔ 测试地区 — Cloudflare CDN
